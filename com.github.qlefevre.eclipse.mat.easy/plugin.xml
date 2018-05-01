@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+
+		
+   <extension point="org.eclipse.mat.api.nameResolver">
+      <resolver impl="com.github.qlefevre.eclipse.mat.easy.inspections.ListNameResolverImpl">
+      </resolver>
+   </extension>
+   
+   <extension point="org.eclipse.mat.report.query">
+		<!-- internal queries exposed to the UI -->
+		<query impl="com.github.qlefevre.eclipse.mat.easy.inspections.CollectionQuery"/>
+		 </extension>
+   
+   <extension point="org.eclipse.mat.ui.editorPanes">
+		<pane id="CollectionTreePane" class="com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes.CollectionPane2">
+			<result type="com.github.qlefevre.eclipse.mat.easy.inspections.CollectionQuery$Tree"/>
+		</pane>
+	</extension>
+	
+	<extension point="org.eclipse.mat.ui.editorContributions">
+		<contribution
+			class="com.github.qlefevre.eclipse.mat.easy.ui.snapshot.editor.HeapEditorContributions"
+			editorClass="org.eclipse.mat.ui.snapshot.editor.HeapEditor"
+			sequenceNr="2" />
+	</extension>
+</plugin>
