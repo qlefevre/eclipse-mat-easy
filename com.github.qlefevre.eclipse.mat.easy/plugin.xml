@@ -26,4 +26,12 @@
 			editorClass="org.eclipse.mat.ui.snapshot.editor.HeapEditor"
 			sequenceNr="2" />
 	</extension>
+	
+	<extension-point id="com.github.qlefevre.eclipse.mat.easy.extension.collectionHeapResolver"
+        name="CollectionHeapResolver"
+        schema="schema/com.github.qlefevre.eclipse.mat.easy.extension.collectionheapresolver.exsd" />
+        
+ 	<extension point="com.github.qlefevre.eclipse.mat.easy.extension.collectionHeapResolver">
+    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.ListCollectionHeapResolver" />
+ 	</extension>
 </plugin>

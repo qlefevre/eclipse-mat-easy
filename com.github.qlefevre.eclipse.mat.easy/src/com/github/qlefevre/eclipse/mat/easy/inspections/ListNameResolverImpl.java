@@ -69,7 +69,7 @@ public class ListNameResolverImpl implements IClassSpecificNameResolver {
 	}
 	
 	private void getSourceCodeReference(IObject object, StringBuffer stringBuffer) throws SnapshotException {
-		stringBuffer.append(" Source: List<Object> ");
+		stringBuffer.append(" Source: ");
 		String referenceName = "?";
 		referenceName = collectionHeapResolver.getSourceCodeReference(object);
 		stringBuffer.append(referenceName);

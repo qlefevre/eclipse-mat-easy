@@ -12,7 +12,8 @@ Require-Bundle: org.eclipse.mat.api,
  org.eclipse.ui,
  org.eclipse.mat.report,
  org.eclipse.jface
-Export-Package: com.github.qlefevre.eclipse.mat.easy.inspections,
+Export-Package: com.github.qlefevre.eclipse.mat.easy.extension,
+ com.github.qlefevre.eclipse.mat.easy.inspections,
  com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: com.github.qlefevre.eclipse.mat.easy.EclipseMatEasyPlugin

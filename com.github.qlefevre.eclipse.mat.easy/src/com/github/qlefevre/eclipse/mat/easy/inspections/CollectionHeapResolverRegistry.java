@@ -3,7 +3,16 @@
  */
 package com.github.qlefevre.eclipse.mat.easy.inspections;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.mat.SnapshotException;
+import org.eclipse.mat.snapshot.extension.Subject;
+import org.eclipse.mat.snapshot.extension.Subjects;
 import org.eclipse.mat.snapshot.model.IObject;
 
 import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
@@ -14,8 +23,10 @@ import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
  */
 public final class CollectionHeapResolverRegistry implements ICollectionHeapResolver{
 	
-
+	private static final String EXTENSION_POINT_ID = "com.github.qlefevre.eclipse.mat.easy.extension.collectionHeapResolver";
+	
 	private static CollectionHeapResolverRegistry instance;
+	private Map<String,ICollectionHeapResolver> resolvers = new HashMap<>();
 	
 	private CollectionHeapResolverRegistry() {
 	}
@@ -23,10 +34,44 @@ public final class CollectionHeapResolverRegistry implements ICollectionHeapReso
 	public static synchronized CollectionHeapResolverRegistry getInstance() {
 		if(instance == null) {
 			instance = new CollectionHeapResolverRegistry();
+			instance.initialize();
 		}
 		return instance;
 	}
 	
+	private void initialize() {
+		 IExtensionRegistry reg = Platform.getExtensionRegistry();
+		    IConfigurationElement[] elements = reg.getConfigurationElementsFor(EXTENSION_POINT_ID);
+		    for (IConfigurationElement elem : elements) {
+		    	ICollectionHeapResolver resolver;
+				try {
+					resolver = (ICollectionHeapResolver)elem.createExecutableExtension("impl");
+					 String[] subjects = extractSubjects(resolver);
+			         if (subjects != null && subjects.length > 0)
+			         {
+			             for (int ii = 0; ii < subjects.length; ii++)
+			                 resolvers.put(subjects[ii], resolver);
+			         }
+				} catch (CoreException e) {
+					// TODO logger
+					e.printStackTrace();
+				}
+		        
+		     }
+	}
+	
+	protected String[] extractSubjects(ICollectionHeapResolver instance)
+    {
+        Subjects subjects = instance.getClass().getAnnotation(Subjects.class);
+        if (subjects != null)
+            return subjects.value();
+
+        Subject subject = instance.getClass().getAnnotation(Subject.class);
+        return subject != null ? new String[] { subject.value() } : null;
+    }
+	
+	
+
 	@Override
 	public long getCollectionHeapSize(IObject object) throws SnapshotException {
 		// TODO Auto-generated method stub

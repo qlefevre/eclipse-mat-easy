@@ -7,6 +7,7 @@ import static com.github.qlefevre.eclipse.mat.easy.inspections.ListImplementatio
 
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.snapshot.ISnapshot;
+import org.eclipse.mat.snapshot.extension.Subjects;
 import org.eclipse.mat.snapshot.model.IObject;
 import org.eclipse.mat.snapshot.model.NamedReference;
 
@@ -17,6 +18,7 @@ import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
  * @author Quentin
  *
  */
+@Subjects(value= {"java.util.ArrayList","java.util.LinkedList"})
 public class ListCollectionHeapResolver implements ICollectionHeapResolver{
 
 	@Override
