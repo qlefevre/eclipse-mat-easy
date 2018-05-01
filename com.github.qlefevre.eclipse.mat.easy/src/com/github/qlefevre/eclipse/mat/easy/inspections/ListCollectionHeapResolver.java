@@ -52,7 +52,12 @@ public class ListCollectionHeapResolver implements ICollectionHeapResolver{
 				referenceName = ref.getName();
 			}
 		}
-		return referenceName;
+		return "List<Object> "+referenceName;
+	}
+
+	@Override
+	public byte getType(IObject object) throws SnapshotException {
+		return TYPE_LIST;
 	}
 
 }

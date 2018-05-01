@@ -1,6 +1,5 @@
 package com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -30,13 +29,8 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
 		List<Object> nodes = (List<Object>) tree.getChildren(arg0);
-		List<Object> children = new ArrayList<>();
-		for(Object node : nodes) {
-			if(((double)tree.getColumnValue(node, 3)) > 0.01) {
-				children.add(node);
-			}
-		}
-		return children.toArray();
+		Object[] children = nodes.stream().filter(node -> { return ((double)tree.getColumnValue(node, 3)) > 0.01;}).toArray();
+		return children;
 	}
 
 	@Override
@@ -44,13 +38,8 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
 		List<Object> nodes =((List<Object>)arg0);
-		List<Object> children = new ArrayList<>();
-		for(Object node : nodes) {
-			if(((double)tree.getColumnValue(node, 3)) > 0.01) {
-				children.add(node);
-			}
-		}
-		return children.toArray();
+		Object[] children = nodes.stream().filter(node -> { return ((double)tree.getColumnValue(node, 3)) > 0.01;}).toArray();
+		return children;
 	}
 
 	@Override
@@ -60,7 +49,11 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 
 	@Override
 	public boolean hasChildren(Object arg0) {
-		return true;
+		final Tree tree = pane.getTree();
+		@SuppressWarnings("unchecked")
+		List<Object> nodes = (List<Object>) tree.getChildren(arg0);
+		boolean hasChildren = nodes.stream().anyMatch(node -> { return ((double)tree.getColumnValue(node, 3)) > 0.01;});
+		return hasChildren;
 	}
 
 }

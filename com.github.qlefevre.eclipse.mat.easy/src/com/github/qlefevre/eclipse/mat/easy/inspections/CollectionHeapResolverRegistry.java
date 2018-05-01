@@ -14,11 +14,6 @@ import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
  */
 public final class CollectionHeapResolverRegistry implements ICollectionHeapResolver{
 	
-	public static final byte TYPE_OBJECT = 0;
-	public static final byte TYPE_LIST = 1;
-	public static final byte TYPE_SET = 2;
-	public static final byte TYPE_MAP = 3;
-	public static final byte TYPE_ARRAY = 4;
 
 	private static CollectionHeapResolverRegistry instance;
 	
@@ -64,7 +59,13 @@ public final class CollectionHeapResolverRegistry implements ICollectionHeapReso
 	}
 	
 	public String getDisplayName(IObject object) {
-		return object.getClazz().getName();
+		String name = object.getClazz().getName();
+		if(isCollection(object)) {
+			try {
+			name = getSourceCodeReference(object)+" ("+name+")";
+			}catch(SnapshotException e) {}
+		}
+		return name;
 	}
 	
 	public byte getType(IObject object) {
