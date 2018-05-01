@@ -3,8 +3,6 @@
  */
 package com.github.qlefevre.eclipse.mat.easy.inspections;
 
-import static com.github.qlefevre.eclipse.mat.easy.inspections.ListImplementations.JAVA_UTIL_ARRAYS_ARRAYLIST;
-
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.snapshot.ISnapshot;
 import org.eclipse.mat.snapshot.extension.Subjects;
@@ -18,8 +16,8 @@ import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
  * @author Quentin
  *
  */
-@Subjects(value= {"java.util.ArrayList","java.util.LinkedList"})
-public class ListCollectionHeapResolver implements ICollectionHeapResolver{
+@Subjects(value= {"java.util.HashSet","java.util.TreeSet","java.util.LinkedHashSet"})
+public class SetHeapResolverImpl implements ICollectionHeapResolver{
 
 	@Override
 	public long getCollectionHeapSize(IObject object) throws SnapshotException {
@@ -36,7 +34,6 @@ public class ListCollectionHeapResolver implements ICollectionHeapResolver{
 		int resolvedSize = -1;
 		String classname = object.getClazz().getName();
 		switch(classname) {
-			case JAVA_UTIL_ARRAYS_ARRAYLIST:
 			default:
 					resolvedSize= (Integer) object.resolveValue("size");	
 		}
@@ -54,12 +51,12 @@ public class ListCollectionHeapResolver implements ICollectionHeapResolver{
 				referenceName = ref.getName();
 			}
 		}
-		return "List<Object> "+referenceName;
+		return "Set<Object> "+referenceName;
 	}
 
 	@Override
 	public byte getType(IObject object) throws SnapshotException {
-		return TYPE_LIST;
+		return TYPE_SET;
 	}
 
 }
