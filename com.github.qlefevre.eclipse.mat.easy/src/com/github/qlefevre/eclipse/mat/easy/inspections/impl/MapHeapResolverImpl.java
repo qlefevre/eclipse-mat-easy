@@ -16,7 +16,7 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
  *
  */
 @Subjects(value = { "java.util.HashMap", "java.util.TreeMap", "java.util.LinkedHashMap",
-		"java.util..concurrent.ConcurrentHashMap", "org.apache.commons.collections.map.LinkedMap" })
+		"java.util.concurrent.ConcurrentHashMap", "org.apache.commons.collections.map.LinkedMap" })
 public class MapHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
 
 	@Override

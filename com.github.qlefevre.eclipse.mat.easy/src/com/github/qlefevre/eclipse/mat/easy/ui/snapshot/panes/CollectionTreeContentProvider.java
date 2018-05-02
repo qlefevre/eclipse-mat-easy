@@ -10,12 +10,11 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.impl.CollectionQuery.Tre
 public class CollectionTreeContentProvider implements ITreeContentProvider {
 
 	private CollectionPane2 pane;
-	
 
 	public CollectionTreeContentProvider(CollectionPane2 pane) {
 		this.pane = pane;
 	}
-	
+
 	@Override
 	public void dispose() {
 	}
@@ -29,17 +28,19 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
 		List<Object> nodes = (List<Object>) tree.getChildren(arg0);
-		Object[] children = nodes.stream().filter(node -> { return ((double)tree.getColumnValue(node, 3)) > 0.01;}).toArray();
-		return children;
+		// Object[] children = nodes.stream().filter(node -> { return
+		// ((double)tree.getColumnValue(node, 3)) > 0.01;}).toArray();
+		return nodes.toArray();
 	}
 
 	@Override
 	public Object[] getElements(Object arg0) {
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
-		List<Object> nodes =((List<Object>)arg0);
-		Object[] children = nodes.stream().filter(node -> { return ((double)tree.getColumnValue(node, 3)) > 0.01;}).toArray();
-		return children;
+		List<Object> nodes = ((List<Object>) arg0);
+		// Object[] children = nodes.stream().filter(node -> { return
+		// ((double)tree.getColumnValue(node, 3)) > 0.01;}).toArray();
+		return nodes.toArray();
 	}
 
 	@Override
@@ -52,7 +53,9 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
 		List<Object> nodes = (List<Object>) tree.getChildren(arg0);
-		boolean hasChildren = nodes.stream().anyMatch(node -> { return ((double)tree.getColumnValue(node, 3)) > 0.01;});
+		boolean hasChildren = nodes.stream().anyMatch(node -> {
+			return ((double) tree.getColumnValue(node, 3)) > 0.01;
+		});
 		return hasChildren;
 	}
 
