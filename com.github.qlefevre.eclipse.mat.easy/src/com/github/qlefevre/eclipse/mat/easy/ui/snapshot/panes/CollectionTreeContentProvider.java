@@ -5,7 +5,7 @@ import java.util.List;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 
-import com.github.qlefevre.eclipse.mat.easy.inspections.CollectionQuery.Tree;
+import com.github.qlefevre.eclipse.mat.easy.inspections.impl.CollectionQuery.Tree;
 
 public class CollectionTreeContentProvider implements ITreeContentProvider {
 

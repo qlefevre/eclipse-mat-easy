@@ -1,4 +1,4 @@
-package com.github.qlefevre.eclipse.mat.easy.inspections;
+package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.collect.ArrayInt;
@@ -19,6 +19,7 @@ import org.eclipse.mat.util.IProgressListener;
 import org.eclipse.mat.util.VoidProgressListener;
 
 import com.github.qlefevre.eclipse.mat.easy.Messages;
+import com.github.qlefevre.eclipse.mat.easy.inspections.CollectionHeapResolverRegistry;
 
 import java.util.*;
 

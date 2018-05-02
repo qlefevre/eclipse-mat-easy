@@ -1,5 +1,5 @@
 /*
- * Copyright 2018  Quentin Lefèvre
+ * Copyright 2018  Quentin Lefï¿½vre
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,17 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.qlefevre.eclipse.mat.easy.inspections;
+package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 
-import static com.github.qlefevre.eclipse.mat.easy.inspections.ListImplementations.JAVA_UTIL_ARRAYLIST;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.ListImplementations.JAVA_UTIL_ARRAYS_ARRAYLIST;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.ListImplementations.JAVA_UTIL_LINKEDLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.impl.ListImplementations.JAVA_UTIL_ARRAYLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.impl.ListImplementations.JAVA_UTIL_ARRAYS_ARRAYLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.impl.ListImplementations.JAVA_UTIL_LINKEDLIST;
 
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.query.BytesFormat;
 import org.eclipse.mat.snapshot.extension.IClassSpecificNameResolver;
 import org.eclipse.mat.snapshot.extension.Subjects;
 import org.eclipse.mat.snapshot.model.IObject;
+
+import com.github.qlefevre.eclipse.mat.easy.inspections.CollectionHeapResolverRegistry;
 /**
  * @author Quentin
  *

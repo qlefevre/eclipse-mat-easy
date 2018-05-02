@@ -14,7 +14,7 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 
-import com.github.qlefevre.eclipse.mat.easy.inspections.CollectionQuery.Tree;
+import com.github.qlefevre.eclipse.mat.easy.inspections.impl.CollectionQuery.Tree;
 @SuppressWarnings("restriction")
 public class CollectionPane2 extends AbstractEditorPane {
 	

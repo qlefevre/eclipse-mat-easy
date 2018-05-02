@@ -34,7 +34,7 @@ import org.eclipse.mat.util.VoidProgressListener;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.MessageBox;
 
-import com.github.qlefevre.eclipse.mat.easy.inspections.CollectionQuery;
+import com.github.qlefevre.eclipse.mat.easy.inspections.impl.CollectionQuery;
 
 @SuppressWarnings("restriction")
 public class CollectionPane extends QueryResultPane

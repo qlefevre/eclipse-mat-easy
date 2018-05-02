@@ -1,4 +1,4 @@
-package com.github.qlefevre.eclipse.mat.easy.inspections;
+package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 
 public class ListImplementations {
 
