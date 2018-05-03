@@ -8,13 +8,10 @@ import org.eclipse.mat.snapshot.model.NamedReference;
 import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
 
 public abstract class AbstractCollectionHeapResolver implements ICollectionHeapResolver {
-
+	
 	@Override
 	public long getCollectionHeapSize(IObject object) throws SnapshotException {
 		long heap = object.getRetainedHeapSize();
-		for (NamedReference ref : object.getOutboundReferences()) {
-			heap += ref.getObject().getRetainedHeapSize();
-		}
 		return heap;
 	}
 
