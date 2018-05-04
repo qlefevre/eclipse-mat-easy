@@ -29,10 +29,10 @@ import java.util.*;
 @HelpUrl("/org.eclipse.mat.ui.help/concepts/dominatortree.html")
 public class CollectionQuery implements IQuery {
     public enum Grouping {
-        NONE(Messages.DominatorQuery_Group_None),
-        BY_CLASS(Messages.DominatorQuery_Group_ByClass),
-        BY_CLASSLOADER(Messages.DominatorQuery_Group_ByClassLoader),
-        BY_PACKAGE(Messages.DominatorQuery_Group_ByPackage);
+        NONE(Messages.CollectionQuery_Group_None),
+        BY_CLASS(Messages.CollectionQuery_Group_ByClass),
+        BY_CLASSLOADER(Messages.CollectionQuery_Group_ByClassLoader),
+        BY_PACKAGE(Messages.CollectionQuery_Group_ByPackage);
 
         String label;
 
@@ -663,10 +663,10 @@ public class CollectionQuery implements IQuery {
 
         public static PackageNode prepareSet(ISnapshot snapshot, int[] roots, IProgressListener listener)
                 throws SnapshotException {
-            PackageNode root = new PackageNode(Messages.DominatorQuery_LabelAll);
+            PackageNode root = new PackageNode(Messages.CollectionQuery_LabelAll);
             PackageNode current;
 
-            listener.beginTask(Messages.DominatorQuery_Msg_Grouping, roots.length / 100);
+            listener.beginTask(Messages.CollectionQuery_Msg_Grouping, roots.length / 100);
             int index = 0;
             for (int dominatorId : roots) {
                 if (listener.isCanceled())

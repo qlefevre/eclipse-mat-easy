@@ -26,50 +26,54 @@ import org.eclipse.mat.snapshot.extension.Subjects;
 import org.eclipse.mat.snapshot.model.IObject;
 
 import com.github.qlefevre.eclipse.mat.easy.inspections.CollectionHeapResolverRegistry;
+
 /**
  * @author Quentin
  *
  */
-@Subjects(value={JAVA_UTIL_ARRAYLIST,
-		JAVA_UTIL_LINKEDLIST,
-		JAVA_UTIL_ARRAYS_ARRAYLIST})
-public class ListNameResolverImpl implements IClassSpecificNameResolver {
+@Subjects(value = { JAVA_UTIL_ARRAYLIST, JAVA_UTIL_LINKEDLIST, JAVA_UTIL_ARRAYS_ARRAYLIST })
+public class CollectionNameResolverImpl implements IClassSpecificNameResolver {
 
 	private final CollectionHeapResolverRegistry collectionHeapResolver;
+
 	/**
 	 * Default constructor
 	 */
-	public ListNameResolverImpl() {
+	public CollectionNameResolverImpl() {
 		collectionHeapResolver = CollectionHeapResolverRegistry.getInstance();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.mat.snapshot.extension.IClassSpecificNameResolver#resolve(org.eclipse.mat.snapshot.model.IObject)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.mat.snapshot.extension.IClassSpecificNameResolver#resolve(org.
+	 * eclipse.mat.snapshot.model.IObject)
 	 */
 	public String resolve(IObject object) throws SnapshotException {
 		StringBuffer stringBuffer = new StringBuffer(100);
-		getCollectionHeapSize(object,stringBuffer);
-		getCollectionSize(object,stringBuffer);
+		getCollectionHeapSize(object, stringBuffer);
+		getCollectionSize(object, stringBuffer);
 		getSourceCodeReference(object, stringBuffer);
 		return stringBuffer.toString();
 	}
-	
+
 	private void getCollectionHeapSize(IObject object, StringBuffer stringBuffer) throws SnapshotException {
-		long heap =collectionHeapResolver.getCollectionHeapSize(object);
+		long heap = collectionHeapResolver.getCollectionHeapSize(object);
 		stringBuffer.append("Heap: ");
 		stringBuffer.append(BytesFormat.getInstance().format(heap));
 	}
-	
+
 	private void getCollectionSize(IObject object, StringBuffer stringBuffer) throws SnapshotException {
 		stringBuffer.append(" Size: ");
 		int resolvedSize = collectionHeapResolver.getCollectionSize(object);
-		if(resolvedSize >= 0) {
+		if (resolvedSize >= 0) {
 			stringBuffer.append(resolvedSize);
-		}else {
+		} else {
 			stringBuffer.append("?");
 		}
 	}
-	
+
 	private void getSourceCodeReference(IObject object, StringBuffer stringBuffer) throws SnapshotException {
 		stringBuffer.append(" Source: ");
 		String referenceName = "?";

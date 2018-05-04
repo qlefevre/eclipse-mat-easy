@@ -28,9 +28,10 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
 		List<Object> nodes = (List<Object>) tree.getChildren(arg0);
-		// Object[] children = nodes.stream().filter(node -> { return
-		// ((double)tree.getColumnValue(node, 3)) > 0.01;}).toArray();
-		return nodes.toArray();
+		Object[] children = nodes.stream().filter(node -> {
+			return ((double) tree.getColumnValue(node, 3)) > 0.005;
+		}).toArray();
+		return children;
 	}
 
 	@Override
@@ -38,9 +39,10 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
 		List<Object> nodes = ((List<Object>) arg0);
-		// Object[] children = nodes.stream().filter(node -> { return
-		// ((double)tree.getColumnValue(node, 3)) > 0.01;}).toArray();
-		return nodes.toArray();
+		Object[] children = nodes.stream().filter(node -> {
+			return ((double) tree.getColumnValue(node, 3)) > 0.005;
+		}).toArray();
+		return children;
 	}
 
 	@Override
