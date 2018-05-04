@@ -12,10 +12,6 @@ public abstract class AbstractCollectionHeapResolver implements ICollectionHeapR
 	@Override
 	public long getCollectionHeapSize(IObject object) throws SnapshotException {
 		long heap = object.getRetainedHeapSize();
-		/*
-		 * for (NamedReference ref : object.getOutboundReferences()) { heap +=
-		 * ref.getObject().getRetainedHeapSize(); }
-		 */
 		return heap;
 	}
 
