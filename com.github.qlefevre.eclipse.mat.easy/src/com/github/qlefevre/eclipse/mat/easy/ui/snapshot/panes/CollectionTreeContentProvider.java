@@ -28,14 +28,9 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
 		List<Object> nodes = (List<Object>) tree.getChildren(arg0);
-<<<<<<< HEAD
 		Object[] children = nodes.stream().filter(node -> {
 			return ((double) tree.getColumnValue(node, 3)) > 0.005;
 		}).toArray();
-=======
-		 Object[] children = nodes.stream().filter(node -> { return
-		 ((double)tree.getColumnValue(node, 3)) > 0.01;}).toArray();
->>>>>>> branch 'master' of https://github.com/qlefevre/eclipse-mat-easy.git
 		return children;
 	}
 
@@ -44,14 +39,9 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
 		List<Object> nodes = ((List<Object>) arg0);
-<<<<<<< HEAD
 		Object[] children = nodes.stream().filter(node -> {
 			return ((double) tree.getColumnValue(node, 3)) > 0.005;
 		}).toArray();
-=======
-		 Object[] children = nodes.stream().filter(node -> { return
-		 ((double)tree.getColumnValue(node, 3)) > 0.01;}).toArray();
->>>>>>> branch 'master' of https://github.com/qlefevre/eclipse-mat-easy.git
 		return children;
 	}
 

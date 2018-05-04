@@ -6,7 +6,6 @@ package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.snapshot.extension.Subjects;
 import org.eclipse.mat.snapshot.model.IObject;
-import org.eclipse.mat.snapshot.model.NamedReference;
 
 import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
 import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapResolver;
@@ -18,7 +17,7 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
  */
 @Subjects(value = { "java.util.HashSet", "java.util.TreeSet", "java.util.LinkedHashSet" })
 public class SetHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
-	
+
 	@Override
 	public int getCollectionSize(IObject object) throws SnapshotException {
 		IObject map = (IObject) object.resolveValue("map");

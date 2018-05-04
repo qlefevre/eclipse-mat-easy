@@ -17,7 +17,10 @@ package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 
 import static com.github.qlefevre.eclipse.mat.easy.inspections.impl.ListImplementations.JAVA_UTIL_ARRAYLIST;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.impl.ListImplementations.JAVA_UTIL_ARRAYS_ARRAYLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.impl.ListImplementations.JAVA_UTIL_HASHMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.impl.ListImplementations.JAVA_UTIL_LINKEDHASHMAP;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.impl.ListImplementations.JAVA_UTIL_LINKEDLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.impl.ListImplementations.JAVA_UTIL_TREEMAP;
 
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.query.BytesFormat;
@@ -31,7 +34,8 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.CollectionHeapResolverRe
  * @author Quentin
  *
  */
-@Subjects(value = { JAVA_UTIL_ARRAYLIST, JAVA_UTIL_LINKEDLIST, JAVA_UTIL_ARRAYS_ARRAYLIST })
+@Subjects(value = { JAVA_UTIL_ARRAYLIST, JAVA_UTIL_LINKEDLIST, JAVA_UTIL_ARRAYS_ARRAYLIST, JAVA_UTIL_HASHMAP,
+		JAVA_UTIL_TREEMAP, JAVA_UTIL_LINKEDHASHMAP })
 public class CollectionNameResolverImpl implements IClassSpecificNameResolver {
 
 	private final CollectionHeapResolverRegistry collectionHeapResolver;
