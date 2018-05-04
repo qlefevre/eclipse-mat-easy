@@ -1,6 +1,7 @@
 package com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
@@ -8,6 +9,10 @@ import org.eclipse.jface.viewers.Viewer;
 import com.github.qlefevre.eclipse.mat.easy.inspections.impl.CollectionQuery.Tree;
 
 public class CollectionTreeContentProvider implements ITreeContentProvider {
+
+	private static final int CHILDREN_LIMIT = 10;
+
+	private static final double MAX_NODE_RETAINEDHEAP_PERCENTAGE = 0.01;
 
 	private CollectionPane2 pane;
 
@@ -28,9 +33,12 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
 		List<Object> nodes = (List<Object>) tree.getChildren(arg0);
-		Object[] children = nodes.stream().filter(node -> {
-			return ((double) tree.getColumnValue(node, 3)) > 0.005;
-		}).toArray();
+		// Filter by percentage
+		Object[] children = nodes.stream().filter(predicate(tree)).toArray();
+		// No children ?
+		if (children.length == 0) {
+			children = nodes.stream().limit(CHILDREN_LIMIT).toArray();
+		}
 		return children;
 	}
 
@@ -39,9 +47,9 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
 		List<Object> nodes = ((List<Object>) arg0);
-		Object[] children = nodes.stream().filter(node -> {
-			return ((double) tree.getColumnValue(node, 3)) > 0.005;
-		}).toArray();
+		// Filter by percentage
+		Object[] children = nodes.stream().filter(predicate(tree)).toArray();
+
 		return children;
 	}
 
@@ -55,10 +63,19 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
 		List<Object> nodes = (List<Object>) tree.getChildren(arg0);
-		boolean hasChildren = nodes.stream().anyMatch(node -> {
-			return ((double) tree.getColumnValue(node, 3)) > 0.01;
-		});
+		// Has children ?
+		boolean hasChildren = nodes.stream().anyMatch(predicate(tree));
+		// No children ?
+		if (!hasChildren) {
+			hasChildren = getChildren(arg0).length > 0;
+		}
 		return hasChildren;
+	}
+
+	private Predicate<Object> predicate(Tree tree) {
+		return node -> {
+			return ((double) tree.getColumnValue(node, 3)) > MAX_NODE_RETAINEDHEAP_PERCENTAGE;
+		};
 	}
 
 }

@@ -20,7 +20,7 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.impl.CollectionQuery.Tre
 public class CollectionPane2 extends AbstractEditorPane {
 
 	private static final int COLUMN_WIDTH_SIZE = 60;
-	private static final int COLUMN_WIDTH_HEAP = 90;
+	private static final int COLUMN_WIDTH_HEAP = 100;
 	private static final int COLUMN_WIDTH_PERCENTAGE = 80;
 	private static final int COLUMN_WIDTH_LAST_COLUMNS = COLUMN_WIDTH_SIZE + COLUMN_WIDTH_HEAP
 			+ COLUMN_WIDTH_PERCENTAGE;
@@ -83,7 +83,7 @@ public class CollectionPane2 extends AbstractEditorPane {
 				org.eclipse.swt.widgets.Tree tree = viewer.getTree();
 				Rectangle bounds = ((org.eclipse.swt.widgets.Composite) e.getSource()).getBounds();
 				int width = bounds.width - bounds.x;
-				tree.getColumn(0).setWidth(width - COLUMN_WIDTH_LAST_COLUMNS - 5);
+				tree.getColumn(0).setWidth(width - COLUMN_WIDTH_LAST_COLUMNS - 10);
 			}
 
 			@Override
