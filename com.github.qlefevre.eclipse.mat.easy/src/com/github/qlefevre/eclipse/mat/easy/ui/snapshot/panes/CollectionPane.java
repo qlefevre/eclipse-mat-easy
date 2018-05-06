@@ -240,6 +240,8 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 	}
 
 	private IContextObject getInspectorContextObject(Object subject) {
+		if (subject instanceof String)
+			return null;
 		return srcQueryResult.getDefaultContextProvider().getContext(subject);
 	}
 

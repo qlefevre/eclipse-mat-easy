@@ -1,6 +1,10 @@
 # Compiled class file
 *.class
 
+# Index Heap Dump File
+*.index
+*.threads
+
 # Log file
 *.log
 
