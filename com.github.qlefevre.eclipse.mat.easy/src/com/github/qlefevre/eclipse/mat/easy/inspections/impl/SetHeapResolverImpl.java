@@ -1,6 +1,12 @@
-/**
- * 
- */
+/*******************************************************************************
+ * Copyright (c) 2018 Quentin Lefèvre and others
+ *
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 
 import org.eclipse.mat.SnapshotException;
@@ -12,7 +18,7 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
 
 /**
  * 
- * @author Quentin
+ * @author Quentin Lefèvre
  *
  */
 @Subjects(value = { "java.util.HashSet", "java.util.TreeSet", "java.util.LinkedHashSet" })

@@ -1,6 +1,12 @@
-/**
- * 
- */
+/*******************************************************************************
+ * Copyright (c) 2018 Quentin Lefèvre and others
+ *
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy.inspections;
 
 import org.eclipse.mat.SnapshotException;
@@ -9,14 +15,14 @@ import org.eclipse.mat.snapshot.model.IObject;
 import org.eclipse.mat.snapshot.model.NamedReference;
 
 /**
- * @author Quentin
+ * @author Quentin Lefèvre
  *
  */
 public final class SnapshotUtil {
 
 	private static final String UNKNOWN_REF_JAVA_LOCAL = "<Java Local>";
 	private static final String UNKNOWN_REF = "var?";
-	
+
 	/**
 	 * Default constructor
 	 */
@@ -36,7 +42,7 @@ public final class SnapshotUtil {
 				}
 			}
 		}
-		if(UNKNOWN_REF_JAVA_LOCAL.equals(referenceName)) {
+		if (UNKNOWN_REF_JAVA_LOCAL.equals(referenceName)) {
 			referenceName = UNKNOWN_REF;
 		}
 		return referenceName;

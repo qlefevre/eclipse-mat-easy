@@ -1,6 +1,12 @@
-/**
- * 
- */
+/*******************************************************************************
+ * Copyright (c) 2018 Quentin Lefèvre and others
+ *
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy;
 
 import java.io.File;
@@ -18,7 +24,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
- * @author Quentin
+ * @author Quentin Lefèvre
  *
  */
 @SuppressWarnings("restriction")
@@ -35,7 +41,7 @@ public class EclipseMatEasyPlugin extends AbstractUIPlugin {
 	public static final String STRING = PREFIX + "string.png"; //$NON-NLS-1$
 	public static final String NUMBER = PREFIX + "number.png"; //$NON-NLS-1$
 	public static final String SUM = PREFIX + "sum.gif"; //$NON-NLS-1$
-	
+
 	private static EclipseMatEasyPlugin plugin;
 
 	private Map<ImageDescriptor, Image> imageCache = new HashMap<ImageDescriptor, Image>(20);
