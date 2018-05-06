@@ -30,7 +30,6 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.query.IContextObject;
-import org.eclipse.mat.query.IResultTree;
 import org.eclipse.mat.query.registry.QueryResult;
 import org.eclipse.mat.snapshot.ISnapshot;
 import org.eclipse.mat.ui.MemoryAnalyserPlugin;
@@ -324,7 +323,7 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 			Job job = new AbstractPaneJob(getText(), CollectionPane.this) {
 				protected IStatus doRun(IProgressMonitor monitor) {
 					try {
-						IResultTree tree = null;
+						tree = null;
 
 						ProgressMonitorWrapper listener = new ProgressMonitorWrapper(monitor);
 						ISnapshot snapshot = (ISnapshot) getQueryContext().get(ISnapshot.class, null);
@@ -352,10 +351,10 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 								// activateViewer(v);
 
 								srcQueryResult = queryResult;
-								Tree collectiontree = ((Tree) srcQueryResult.getSubject());
-								viewer.setInput(collectiontree.getElements());
-								groupedBy = collectiontree.getGroupedBy();
-								roots = collectiontree.getRoots();
+								// Tree collectiontree = ((Tree) srcQueryResult.getSubject());
+								viewer.setInput(tree.getElements());
+								groupedBy = tree.getGroupedBy();
+								roots = tree.getRoots();
 
 							}
 

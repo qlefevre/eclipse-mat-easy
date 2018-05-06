@@ -46,9 +46,9 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.CollectionHeapResolverRe
 @Icon("/META-INF/icons/collection_tree.gif")
 @HelpUrl("/org.eclipse.mat.ui.help/concepts/dominatortree.html")
 public class CollectionQuery implements IQuery {
-	
+
 	private static final int NOT_INITIALIZED = -10;
-	
+
 	public enum Grouping {
 		NONE(Messages.CollectionQuery_Group_None), BY_CLASS(Messages.CollectionQuery_Group_ByClass);
 
@@ -85,7 +85,7 @@ public class CollectionQuery implements IQuery {
 			return Factory.create(snapshot, roots, listener);
 		case BY_CLASS:
 			return Factory.groupByClass(snapshot, roots, listener);
-	
+
 		}
 
 		return null;
@@ -119,7 +119,6 @@ public class CollectionQuery implements IQuery {
 			return new ClassTree(snapshot, roots, elements);
 		}
 
-		
 	}
 
 	// //////////////////////////////////////////////////////////////
@@ -138,7 +137,7 @@ public class CollectionQuery implements IQuery {
 			this.objectId = objectId;
 			this.size = NOT_INITIALIZED;
 			this.retainedHeap = NOT_INITIALIZED;
-			this.type = (byte)NOT_INITIALIZED;
+			this.type = (byte) NOT_INITIALIZED;
 		}
 	}
 
@@ -153,8 +152,6 @@ public class CollectionQuery implements IQuery {
 	private static class ClassNode extends GroupedNode {
 		private ClassNode(int objectId) {
 			super(objectId);
-			size = NOT_INITIALIZED;
-			retainedHeap =NOT_INITIALIZED;
 		}
 	}
 
@@ -284,13 +281,13 @@ public class CollectionQuery implements IQuery {
 					}
 					return node.label;
 				case 1:
-					if (node.size ==NOT_INITIALIZED) {
+					if (node.size == NOT_INITIALIZED) {
 						IObject obj = snapshot.getObject(node.objectId);
 						node.size = collectionHeapResolver.getCollectionSize(obj);
 					}
 					return node.size;
 				case 2:
-					if (node.retainedHeap ==NOT_INITIALIZED) {
+					if (node.retainedHeap == NOT_INITIALIZED) {
 						IObject obj = snapshot.getObject(node.objectId);
 						node.retainedHeap = collectionHeapResolver.getCollectionHeapSize(obj);
 					}
@@ -333,6 +330,9 @@ public class CollectionQuery implements IQuery {
 	}
 
 	private static class ClassTree extends Tree {
+
+		private CollectionHeapResolverRegistry collectionHeapResolver;
+
 		public static List<ClassNode> prepare(ISnapshot snapshot, int[] objectIds, IProgressListener listener) {
 			try {
 				HashMapIntObject<ClassNode> class2node = new HashMapIntObject<ClassNode>();
@@ -398,8 +398,10 @@ public class CollectionQuery implements IQuery {
 		private ClassTree(ISnapshot snapshot, int[] roots, List<ClassNode> elements) {
 			super(snapshot, roots, Grouping.BY_CLASS);
 			this.elements = elements;
+			this.collectionHeapResolver = CollectionHeapResolverRegistry.getInstance();
 		}
 
+		@Override
 		public Column[] getColumns() {
 			return new Column[] { new Column(Messages.Column_ClassName, String.class),
 					new Column(Messages.Column_Objects, int.class), new Column(Messages.Column_ShallowHeap, int.class),
@@ -408,38 +410,68 @@ public class CollectionQuery implements IQuery {
 							.formatting(new java.text.DecimalFormat("0.00%")) };
 		}
 
+		@Override
 		public List<?> getElements() {
 			return elements;
 		}
 
+		@Override
 		public boolean hasChildren(Object element) {
 			// too expensive to check up-front
 			return true;
 		}
 
+		@Override
 		public List<?> getChildren(Object parent) {
 			return prepare(snapshot, ((GroupedNode) parent).objects.toArray(), new VoidProgressListener());
 		}
 
+		@Override
 		public Object getColumnValue(Object row, int columnIndex) {
-			ClassNode node = (ClassNode) row;
+			try {
+				ClassNode node = (ClassNode) row;
 
-			switch (columnIndex) {
-			case 0:
-				return node.label;
-			case 1:
-				return node.objects.size();
-			case 2:
-				return node.size;
-			case 3:
-				return node.retainedHeap;
-			case 4:
-				return node.retainedHeap / totalHeap;
+				switch (columnIndex) {
+				case -1:
+					if (node.type == NOT_INITIALIZED) {
+						IObject obj = snapshot.getObject(node.objectId);
+						node.type = collectionHeapResolver.getType(obj);
+					}
+					return node.type;
+				case 0:
+					if (node.label == null) {
+						IObject obj = snapshot.getObject(node.objectId);
+						node.label = collectionHeapResolver.getDisplayName(obj);
+					}
+					return node.label;
+				case 1:
+					if (node.size == NOT_INITIALIZED) {
+						IObject obj = snapshot.getObject(node.objectId);
+						node.size = collectionHeapResolver.getCollectionSize(obj);
+					}
+					return node.size;
+				case 2:
+					if (node.retainedHeap == NOT_INITIALIZED) {
+						IObject obj = snapshot.getObject(node.objectId);
+						node.retainedHeap = collectionHeapResolver.getCollectionHeapSize(obj);
+					}
+					return node.retainedHeap;
+				case 3:
+					if (node.retainedHeap == NOT_INITIALIZED) {
+						IObject obj = snapshot.getObject(node.objectId);
+						node.retainedHeap = collectionHeapResolver.getCollectionHeapSize(obj);
+					}
+					return node.retainedHeap / totalHeap;
+				}
+
+				return null;
+			} catch (SnapshotException e) {
+				throw new RuntimeException(e);
 			}
 
-			return null;
 		}
 
+		@Override
 		public IContextObject getContext(final Object row) {
 			return new IContextObjectSet() {
 				public int getObjectId() {
@@ -456,8 +488,5 @@ public class CollectionQuery implements IQuery {
 			};
 		}
 	}
-
-	
-
 
 }

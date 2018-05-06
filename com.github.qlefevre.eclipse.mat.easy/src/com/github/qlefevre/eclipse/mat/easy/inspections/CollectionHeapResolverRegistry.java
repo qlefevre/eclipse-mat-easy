@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.snapshot.extension.Subject;
 import org.eclipse.mat.snapshot.extension.Subjects;
+import org.eclipse.mat.snapshot.model.IClass;
 import org.eclipse.mat.snapshot.model.IObject;
 import org.eclipse.mat.snapshot.registry.ClassSpecificNameResolverRegistry;
 
@@ -63,7 +64,7 @@ public final class CollectionHeapResolverRegistry implements ICollectionHeapReso
 		// TODO Auto-generated method stub
 		if (object == null)
 			return 0;
-		String classname = object.getClazz().getName();
+		String classname = getIClass(object).getName();
 		ICollectionHeapResolver resolver = resolvers.get(classname);
 		if (resolver != null) {
 			return resolver.getCollectionHeapSize(object);
@@ -78,7 +79,7 @@ public final class CollectionHeapResolverRegistry implements ICollectionHeapReso
 		// TODO Auto-generated method stub
 		if (object == null)
 			return -1;
-		String classname = object.getClazz().getName();
+		String classname = getIClass(object).getName();
 		ICollectionHeapResolver resolver = resolvers.get(classname);
 		if (resolver != null) {
 			return resolver.getCollectionSize(object);
@@ -92,7 +93,7 @@ public final class CollectionHeapResolverRegistry implements ICollectionHeapReso
 		if (object == null) {
 			return "";
 		}
-		String classname = object.getClazz().getName();
+		String classname = getIClass(object).getName();
 		ICollectionHeapResolver resolver = resolvers.get(classname);
 		if (resolver != null) {
 			return resolver.getSourceCodeReference(object);
@@ -105,7 +106,7 @@ public final class CollectionHeapResolverRegistry implements ICollectionHeapReso
 			return TYPE_OBJECT;
 		if (object.getClazz().isArrayType())
 			return TYPE_ARRAY;
-		String classname = object.getClazz().getName();
+		String classname = getIClass(object).getName();
 		if (STRING_CLASS.equals(classname)) {
 			return TYPE_STRING;
 		} else if (NUMBER_CLASS.contains(classname)) {
@@ -122,7 +123,7 @@ public final class CollectionHeapResolverRegistry implements ICollectionHeapReso
 	}
 
 	public String getDisplayName(IObject object) {
-		String classname = object.getClazz().getName();
+		String classname = getIClass(object).getName();
 		String name = classname;
 		try {
 			if (resolvers.containsKey(classname)) {
@@ -147,6 +148,10 @@ public final class CollectionHeapResolverRegistry implements ICollectionHeapReso
 			e.printStackTrace();
 		}
 		return name;
+	}
+
+	private IClass getIClass(IObject object) {
+		return object instanceof IClass ? (IClass) object : object.getClazz();
 	}
 
 	private String[] extractSubjects(ICollectionHeapResolver instance) {

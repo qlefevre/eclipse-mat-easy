@@ -26,8 +26,11 @@ public class SetHeapResolverImpl extends AbstractCollectionHeapResolver implemen
 
 	@Override
 	public int getCollectionSize(IObject object) throws SnapshotException {
+		Integer resolvedSize = null;
 		IObject map = (IObject) object.resolveValue("map");
-		Integer resolvedSize = (Integer) map.resolveValue("size");
+		if (map != null) {
+			resolvedSize = (Integer) map.resolveValue("size");
+		}
 		return resolvedSize != null ? resolvedSize : -1;
 	}
 
