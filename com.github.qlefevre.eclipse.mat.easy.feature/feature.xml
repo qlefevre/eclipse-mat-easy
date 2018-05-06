@@ -18,8 +18,8 @@
 
    <plugin
          id="com.github.qlefevre.eclipse.mat.easy"
-         download-size="0"
-         install-size="0"
+         download-size="58"
+         install-size="58"
          version="0.0.0"
          unpack="false"/>
 
