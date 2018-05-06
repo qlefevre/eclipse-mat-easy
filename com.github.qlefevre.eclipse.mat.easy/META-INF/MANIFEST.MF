@@ -5,8 +5,8 @@ Bundle-SymbolicName: com.github.qlefevre.eclipse.mat.easy;singleton:=true
 Bundle-Version: 1.0
 Automatic-Module-Name: MAT
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.eclipse.mat.api;bundle-version="1.0.0";visibility:=reexport,
- org.eclipse.mat.ui;bundle-version="1.0.0";visibility:=reexport,
+Require-Bundle: org.eclipse.mat.api;bundle-version="1.5.0",
+ org.eclipse.mat.ui;bundle-version="1.5.0",
  org.eclipse.core.runtime;bundle-version="3.3.100",
  org.eclipse.core.resources;bundle-version="3.3.0",
  org.eclipse.core.filesystem;bundle-version="1.1.0"
