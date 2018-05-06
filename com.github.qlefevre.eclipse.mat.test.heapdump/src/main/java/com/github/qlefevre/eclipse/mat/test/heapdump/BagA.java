@@ -10,21 +10,25 @@
 package com.github.qlefevre.eclipse.mat.test.heapdump;
 
 /**
- * @author Quentin
- *
+ * Object BagA use to retain Heap
+ * 
+ * @author Quentin Lefèvre
  */
-public class BagA {
+public class BagA implements IBag {
 
-	private final BagB bagB = new BagB();
+	private final IBag bag;
+
+	private final int h2g2 = 42;
 
 	/**
-	 * 
+	 * Default constructor
 	 */
-	public BagA() {
+	public BagA(IBag bag) {
+		this.bag = bag;
 	}
 
-	public BagB getBagB() {
-		return bagB;
+	public IBag getBag() {
+		return bag;
 	}
 
 }

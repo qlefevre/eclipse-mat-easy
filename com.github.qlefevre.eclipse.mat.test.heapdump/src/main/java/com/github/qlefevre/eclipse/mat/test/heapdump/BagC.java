@@ -13,21 +13,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Quentin
- *
+ * Object BagC use to retain Heap
+ * 
+ * @author Quentin Lefèvre
  */
-public class BagC {
+public class BagC implements IBag {
 
-	private final List<BagA> bags = new ArrayList<>();
+	private final List<IBag> bags = new ArrayList<>();
 
 	/**
-	 * 
+	 * Default constructor
 	 */
-	public BagC() {
+	public BagC(IBag bag) {
+		if (bag != null)
+			bags.add(bag);
 	}
 
-	public List<BagA> getBags() {
+	public List<IBag> getBags() {
 		return bags;
+	}
+
+	@Override
+	public IBag getBag() {
+		return bags.isEmpty() ? null : bags.get(0);
 	}
 
 }

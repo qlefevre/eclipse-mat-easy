@@ -12,17 +12,24 @@ package com.github.qlefevre.eclipse.mat.test.heapdump;
 import java.util.Collection;
 
 /**
- * @author Quentin
- *
+ * Object BagB use to retain Heap
+ * 
+ * @author Quentin Lefèvre
  */
-public class BagB {
-
-	private Collection<String> values;
+public class BagB implements IBag {
 
 	/**
-	 * 
+	 * String values
 	 */
-	public BagB() {
+	private Collection<String> values;
+
+	private final IBag bag;
+
+	/**
+	 * Default constructor
+	 */
+	public BagB(IBag bag) {
+		this.bag = bag;
 	}
 
 	public Collection<String> getValues() {
@@ -31,6 +38,11 @@ public class BagB {
 
 	public void setValues(Collection<String> values) {
 		this.values = values;
+	}
+
+	@Override
+	public IBag getBag() {
+		return bag;
 	}
 
 }
