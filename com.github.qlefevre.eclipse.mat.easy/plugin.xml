@@ -12,8 +12,6 @@
 
 <plugin>
 
-
-		
    <extension point="org.eclipse.mat.api.nameResolver">
       <resolver impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.CollectionNameResolverImpl">
       </resolver>

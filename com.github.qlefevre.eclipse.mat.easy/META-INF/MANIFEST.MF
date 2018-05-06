@@ -1,19 +1,16 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: MAT
+Bundle-Name: Eclipse MAT Easy !
 Bundle-SymbolicName: com.github.qlefevre.eclipse.mat.easy;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0
 Automatic-Module-Name: MAT
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.mat.api,
  org.eclipse.mat.ui,
- org.eclipse.mat.ui.rcp,
+ org.eclipse.jface,
  org.eclipse.core.runtime,
- org.eclipse.ui,
- org.eclipse.mat.report,
- org.eclipse.jface
+ org.eclipse.ui
 Export-Package: com.github.qlefevre.eclipse.mat.easy.extension,
- com.github.qlefevre.eclipse.mat.easy.inspections,
- com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes
+ com.github.qlefevre.eclipse.mat.easy.inspections
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: com.github.qlefevre.eclipse.mat.easy.EclipseMatEasyPlugin
