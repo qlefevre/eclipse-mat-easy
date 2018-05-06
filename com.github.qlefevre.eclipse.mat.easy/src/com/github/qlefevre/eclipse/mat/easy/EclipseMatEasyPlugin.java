@@ -32,7 +32,9 @@ public class EclipseMatEasyPlugin extends AbstractUIPlugin {
 	public static final String SET = PREFIX + "set.gif"; //$NON-NLS-1$
 	public static final String MAP = PREFIX + "map.gif"; //$NON-NLS-1$
 	public static final String ARRAY = PREFIX + "array.gif"; //$NON-NLS-1$
-
+	public static final String STRING = PREFIX + "string.png"; //$NON-NLS-1$
+	public static final String NUMBER = PREFIX + "number.png"; //$NON-NLS-1$
+	
 	private static EclipseMatEasyPlugin plugin;
 
 	private Map<ImageDescriptor, Image> imageCache = new HashMap<ImageDescriptor, Image>(20);

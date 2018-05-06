@@ -17,6 +17,8 @@ public interface ICollectionHeapResolver {
 	public static final byte TYPE_SET = 2;
 	public static final byte TYPE_MAP = 3;
 	public static final byte TYPE_ARRAY = 4;
+	public static final byte TYPE_STRING = 5;
+	public static final byte TYPE_NUMBER = 6;
 
 	public long getCollectionHeapSize(IObject object) throws SnapshotException;
 

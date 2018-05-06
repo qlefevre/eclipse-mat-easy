@@ -3,8 +3,10 @@
  */
 package com.github.qlefevre.eclipse.mat.easy.inspections;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -25,6 +27,17 @@ import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
 public final class CollectionHeapResolverRegistry implements ICollectionHeapResolver {
 
 	private static final String EXTENSION_POINT_ID = "com.github.qlefevre.eclipse.mat.easy.extension.collectionHeapResolver";
+	
+	private static final String STRING_CLASS ="java.lang.String";
+	
+	private static final List<String> NUMBER_CLASS = Arrays.asList(
+	"java.lang.Byte", //
+    "java.lang.Character", //
+    "java.lang.Short", //
+    "java.lang.Integer", //
+    "java.lang.Long", //
+    "java.lang.Float", //
+    "java.lang.Double");
 
 	private static CollectionHeapResolverRegistry instance;
 	private Map<String, ICollectionHeapResolver> resolvers = new HashMap<>();
@@ -45,13 +58,11 @@ public final class CollectionHeapResolverRegistry implements ICollectionHeapReso
 		// TODO Auto-generated method stub
 		if (object == null)
 			return 0;
-		if (isCollection(object)) {
-			String classname = object.getClazz().getName();
-			ICollectionHeapResolver resolver = resolvers.get(classname);
-			if (resolver != null) {
-				return resolver.getCollectionHeapSize(object);
-			}
-			return 0;
+		String classname = object.getClazz().getName();
+		ICollectionHeapResolver resolver = resolvers.get(classname);
+		if (resolver != null) {
+			return resolver.getCollectionHeapSize(object);
+
 		} else {
 			return object.getRetainedHeapSize();
 		}
@@ -61,8 +72,6 @@ public final class CollectionHeapResolverRegistry implements ICollectionHeapReso
 	public int getCollectionSize(IObject object) throws SnapshotException {
 		// TODO Auto-generated method stub
 		if (object == null)
-			return -1;
-		if (!isCollection(object))
 			return -1;
 		String classname = object.getClazz().getName();
 		ICollectionHeapResolver resolver = resolvers.get(classname);
@@ -92,6 +101,11 @@ public final class CollectionHeapResolverRegistry implements ICollectionHeapReso
 		if (object.getClazz().isArrayType())
 			return TYPE_ARRAY;
 		String classname = object.getClazz().getName();
+		if(STRING_CLASS.equals(classname)) {
+			return TYPE_STRING;
+		}else if(NUMBER_CLASS.contains(classname)) {
+			return TYPE_NUMBER;
+		}
 		ICollectionHeapResolver resolver = resolvers.get(classname);
 		if (resolver != null) {
 			try {
@@ -103,28 +117,30 @@ public final class CollectionHeapResolverRegistry implements ICollectionHeapReso
 	}
 
 	public String getDisplayName(IObject object) {
-		String name = object.getClazz().getName();
-		if (isCollection(object)) {
-			try {
+		String classname = object.getClazz().getName();
+		String name = classname;
+		try {
+		if (resolvers.containsKey(classname)) {
+		
 				name = getSourceCodeReference(object) + " (" + name + ")";
-			} catch (SnapshotException e) {
-			}
-		} else {
+			
+		} else if(STRING_CLASS.equals(classname)){
+			String value = ClassSpecificNameResolverRegistry.resolve(object);
+			name = "String "+SnapshotUtil.getReferenceName(object)+" = \""+value+"\";";
+		} else if(NUMBER_CLASS.contains(classname)){
+			String value = ClassSpecificNameResolverRegistry.resolve(object);
+			name = classname.replace("java.lang.", "")+" "+SnapshotUtil.getReferenceName(object)+" = "+value+";";
+		}else {
+		
 			String value = ClassSpecificNameResolverRegistry.resolve(object);
 			if (value != null) {
 				name += " - " + value;
 			}
 		}
-		return name;
-	}
-
-	private boolean isCollection(IObject object) {
-		try {
-			String classname = object.getClazz().getName();
-			return resolvers.containsKey(classname);
-		} catch (Exception vEx) {
-			return false;
+		} catch (SnapshotException e) {
+			e.printStackTrace();
 		}
+		return name;
 	}
 
 	private String[] extractSubjects(ICollectionHeapResolver instance) {

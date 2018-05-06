@@ -38,7 +38,7 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.CollectionHeapResolverRe
 
 @CommandName("collection_tree")
 @Category("__hidden__")
-@Icon("/icons/collection_tree.gif")
+@Icon("/META-INF/icons/collection_tree.gif")
 @HelpUrl("/org.eclipse.mat.ui.help/concepts/dominatortree.html")
 public class CollectionQuery implements IQuery {
 	public enum Grouping {

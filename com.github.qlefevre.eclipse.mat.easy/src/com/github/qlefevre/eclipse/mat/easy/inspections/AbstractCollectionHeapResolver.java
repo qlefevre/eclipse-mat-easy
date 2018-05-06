@@ -23,18 +23,7 @@ public abstract class AbstractCollectionHeapResolver implements ICollectionHeapR
 
 	@Override
 	public String getSourceCodeReference(IObject object) throws SnapshotException {
-		String referenceName = "?";
-		ISnapshot snapshot = object.getSnapshot();
-		int dominatorId = snapshot.getImmediateDominatorId(object.getObjectId());
-		if (dominatorId != -1) {
-			IObject dominatorObject = snapshot.getObject(dominatorId);
-
-			for (NamedReference ref : dominatorObject.getOutboundReferences()) {
-				if (ref.getObjectId() == object.getObjectId()) {
-					referenceName = ref.getName();
-				}
-			}
-		}
+		String referenceName = SnapshotUtil.getReferenceName(object);
 		return getSourceCodeReferencePrefix(object) + referenceName;
 	}
 

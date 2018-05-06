@@ -60,6 +60,10 @@ public class CollectionTreeLabelProvider extends ColumnLabelProvider {
 				return EclipseMatEasyPlugin.getImage(EclipseMatEasyPlugin.MAP);
 			case TYPE_ARRAY:
 				return EclipseMatEasyPlugin.getImage(EclipseMatEasyPlugin.ARRAY);
+			case TYPE_STRING:
+				return EclipseMatEasyPlugin.getImage(EclipseMatEasyPlugin.STRING);
+			case TYPE_NUMBER:
+				return EclipseMatEasyPlugin.getImage(EclipseMatEasyPlugin.NUMBER);
 			}
 			return MemoryAnalyserPlugin.getImage(MemoryAnalyserPlugin.ISharedImages.CLASS);
 		} else {
