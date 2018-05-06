@@ -15,9 +15,9 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 
 	private static final double MAX_NODE_RETAINEDHEAP_PERCENTAGE = 0.01;
 
-	private CollectionPane2 pane;
+	private CollectionPane pane;
 
-	public CollectionTreeContentProvider(CollectionPane2 pane) {
+	public CollectionTreeContentProvider(CollectionPane pane) {
 		this.pane = pane;
 	}
 

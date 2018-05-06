@@ -1,18 +1,21 @@
 package com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes;
 
+import static com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver.TYPE_ARRAY;
+import static com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver.TYPE_LIST;
+import static com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver.TYPE_MAP;
+import static com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver.TYPE_NUMBER;
+import static com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver.TYPE_SET;
+import static com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver.TYPE_STRING;
+
 import java.text.DecimalFormat;
 
-import org.eclipse.jface.resource.FontDescriptor;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.mat.query.BytesFormat;
 import org.eclipse.mat.ui.MemoryAnalyserPlugin;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionHeapResolverRegistry.*;
 import com.github.qlefevre.eclipse.mat.easy.EclipseMatEasyPlugin;
 
 @SuppressWarnings("restriction")
@@ -21,9 +24,9 @@ public class CollectionTreeLabelProvider extends ColumnLabelProvider {
 	private static final DecimalFormat DF_PERCENT = new DecimalFormat("0.00%");
 	private int column;
 
-	private CollectionPane2 pane;
+	private CollectionPane pane;
 
-	public CollectionTreeLabelProvider(CollectionPane2 pane, int column) {
+	public CollectionTreeLabelProvider(CollectionPane pane, int column) {
 		this.pane = pane;
 		this.column = column;
 	}
@@ -86,7 +89,7 @@ public class CollectionTreeLabelProvider extends ColumnLabelProvider {
 	public Font getFont(Object element) {
 		Font font = super.getFont(element);
 		if (element instanceof String) {
-			font =  JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT);
+			font = JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT);
 		}
 		return font;
 	}

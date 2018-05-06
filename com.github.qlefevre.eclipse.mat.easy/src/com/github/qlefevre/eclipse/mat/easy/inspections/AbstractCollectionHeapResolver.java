@@ -1,9 +1,7 @@
 package com.github.qlefevre.eclipse.mat.easy.inspections;
 
 import org.eclipse.mat.SnapshotException;
-import org.eclipse.mat.snapshot.ISnapshot;
 import org.eclipse.mat.snapshot.model.IObject;
-import org.eclipse.mat.snapshot.model.NamedReference;
 
 import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
 

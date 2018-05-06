@@ -15,7 +15,7 @@
 		 </extension>
    
    <extension point="org.eclipse.mat.ui.editorPanes">
-		<pane id="CollectionTreePane" class="com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes.CollectionPane2">
+		<pane id="CollectionTreePane" class="com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes.CollectionPane">
 			<result type="com.github.qlefevre.eclipse.mat.easy.inspections.impl.CollectionQuery$Tree"/>
 		</pane>
 	</extension>
