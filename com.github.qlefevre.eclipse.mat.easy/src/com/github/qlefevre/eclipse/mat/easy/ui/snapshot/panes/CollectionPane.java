@@ -282,8 +282,10 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 				for (CollectionQuery.Grouping group : CollectionQuery.Grouping.values()) {
 					Action action = new GroupingAction(group);
 					action.setText(group.toString());
-					action.setImageDescriptor(
-							MemoryAnalyserPlugin.getImageDescriptor(MemoryAnalyserPlugin.ISharedImages.GROUPING));
+					action.setImageDescriptor(group.equals(CollectionQuery.Grouping.BY_CLASS)
+							? MemoryAnalyserPlugin.getImageDescriptor(MemoryAnalyserPlugin.ISharedImages.CLASS)
+							: MemoryAnalyserPlugin
+									.getImageDescriptor(MemoryAnalyserPlugin.ISharedImages.EXPERT_SYSTEM));
 					if (groupedBy == group) {
 						action.setEnabled(false);
 						action.setChecked(true);
