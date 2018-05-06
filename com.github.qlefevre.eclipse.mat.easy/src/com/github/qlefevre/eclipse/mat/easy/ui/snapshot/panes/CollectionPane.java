@@ -158,12 +158,8 @@ public class CollectionPane extends QueryResultPane
                             case BY_CLASS:
                                 tree = CollectionQuery.Factory.groupByClass(snapshot, roots, listener);
                                 break;
-                            case BY_CLASSLOADER:
-                                tree = CollectionQuery.Factory.groupByClassLoader(snapshot, roots, listener);
-                                break;
-                            case BY_PACKAGE:
-                                tree = CollectionQuery.Factory.groupByPackage(snapshot, roots, listener);
-                                break;
+                
+                   
                         }
 
                         final QueryResult queryResult = new QueryResult(null, "dominator_tree -groupBy " //$NON-NLS-1$

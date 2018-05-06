@@ -4,15 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
 
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.collect.ArrayInt;
 import org.eclipse.mat.collect.HashMapIntObject;
-import org.eclipse.mat.collect.IteratorInt;
 import org.eclipse.mat.query.Column;
 import org.eclipse.mat.query.Column.SortDirection;
 import org.eclipse.mat.query.IContextObject;
@@ -41,9 +37,11 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.CollectionHeapResolverRe
 @Icon("/META-INF/icons/collection_tree.gif")
 @HelpUrl("/org.eclipse.mat.ui.help/concepts/dominatortree.html")
 public class CollectionQuery implements IQuery {
+	
+	private static final int NOT_INITIALIZED = -10;
+	
 	public enum Grouping {
-		NONE(Messages.CollectionQuery_Group_None), BY_CLASS(Messages.CollectionQuery_Group_ByClass), BY_CLASSLOADER(
-				Messages.CollectionQuery_Group_ByClassLoader), BY_PACKAGE(Messages.CollectionQuery_Group_ByPackage);
+		NONE(Messages.CollectionQuery_Group_None), BY_CLASS(Messages.CollectionQuery_Group_ByClass);
 
 		String label;
 
@@ -78,10 +76,7 @@ public class CollectionQuery implements IQuery {
 			return Factory.create(snapshot, roots, listener);
 		case BY_CLASS:
 			return Factory.groupByClass(snapshot, roots, listener);
-		case BY_CLASSLOADER:
-			return Factory.groupByClassLoader(snapshot, roots, listener);
-		case BY_PACKAGE:
-			return Factory.groupByPackage(snapshot, roots, listener);
+	
 		}
 
 		return null;
@@ -115,30 +110,7 @@ public class CollectionQuery implements IQuery {
 			return new ClassTree(snapshot, roots, elements);
 		}
 
-		public static Tree groupByClassLoader(ISnapshot snapshot, int[] roots, IProgressListener listener)
-				throws SnapshotException {
-			List<?> classloader;
-			if (roots.length == 1 && roots[0] == -1)
-				classloader = ClassLoaderTree.prepare(snapshot, listener);
-			else
-				classloader = ClassLoaderTree.prepareSet(snapshot, roots, listener);
-
-			return new ClassLoaderTree(snapshot, roots, classloader);
-		}
-
-		public static Tree groupByPackage(ISnapshot snapshot, int[] roots, IProgressListener listener)
-				throws SnapshotException {
-
-			PackageNode rootNode;
-
-			if (roots.length == 1 && roots[0] == -1)
-				rootNode = PackageTree.prepare(snapshot, listener);
-			else
-				rootNode = PackageTree.prepareSet(snapshot, roots, listener);
-
-			return new PackageTree(snapshot, roots, rootNode);
-
-		}
+		
 	}
 
 	// //////////////////////////////////////////////////////////////
@@ -155,9 +127,9 @@ public class CollectionQuery implements IQuery {
 
 		public Node(int objectId) {
 			this.objectId = objectId;
-			this.size = -1;
-			this.retainedHeap = -1;
-			this.type = -1;
+			this.size = NOT_INITIALIZED;
+			this.retainedHeap = NOT_INITIALIZED;
+			this.type = (byte)NOT_INITIALIZED;
 		}
 	}
 
@@ -172,19 +144,8 @@ public class CollectionQuery implements IQuery {
 	private static class ClassNode extends GroupedNode {
 		private ClassNode(int objectId) {
 			super(objectId);
-			size = 0;
-			retainedHeap = 0;
-		}
-	}
-
-	private static class PackageNode extends GroupedNode {
-		Map<String, PackageNode> subPackages = new HashMap<String, PackageNode>();
-
-		private PackageNode(String label) {
-			super(-1);
-			this.label = label;
-			size = 0;
-			retainedHeap = 0;
+			size = NOT_INITIALIZED;
+			retainedHeap =NOT_INITIALIZED;
 		}
 	}
 
@@ -302,7 +263,7 @@ public class CollectionQuery implements IQuery {
 
 				switch (columnIndex) {
 				case -1:
-					if (node.type == -1) {
+					if (node.type == NOT_INITIALIZED) {
 						IObject obj = snapshot.getObject(node.objectId);
 						node.type = collectionHeapResolver.getType(obj);
 					}
@@ -314,19 +275,19 @@ public class CollectionQuery implements IQuery {
 					}
 					return node.label;
 				case 1:
-					if (node.size == -1) {
+					if (node.size ==NOT_INITIALIZED) {
 						IObject obj = snapshot.getObject(node.objectId);
 						node.size = collectionHeapResolver.getCollectionSize(obj);
 					}
 					return node.size;
 				case 2:
-					if (node.retainedHeap == -1) {
+					if (node.retainedHeap ==NOT_INITIALIZED) {
 						IObject obj = snapshot.getObject(node.objectId);
 						node.retainedHeap = collectionHeapResolver.getCollectionHeapSize(obj);
 					}
 					return node.retainedHeap;
 				case 3:
-					if (node.retainedHeap == -1) {
+					if (node.retainedHeap == NOT_INITIALIZED) {
 						IObject obj = snapshot.getObject(node.objectId);
 						node.retainedHeap = collectionHeapResolver.getCollectionHeapSize(obj);
 					}
@@ -487,297 +448,7 @@ public class CollectionQuery implements IQuery {
 		}
 	}
 
-	private static class ClassLoaderTree extends Tree {
-		/* package */
-		static List<?> prepareSet(ISnapshot snapshot, int[] roots, IProgressListener listener)
-				throws SnapshotException {
-			HashMapIntObject<GroupedNode> classLoader2node = new HashMapIntObject<GroupedNode>();
+	
 
-			for (int ii = 0; ii < roots.length; ii++) {
-				int dominatedId = roots[ii];
-
-				int clId;
-				if (snapshot.isClass(dominatedId)) {
-					IClass cl = (IClass) snapshot.getObject(dominatedId);
-					clId = cl.getClassLoaderId();
-				} else if (snapshot.isClassLoader(dominatedId)) {
-					clId = dominatedId;
-				} else {
-					clId = snapshot.getClassOf(dominatedId).getClassLoaderId();
-				}
-
-				GroupedNode node = classLoader2node.get(clId);
-				if (node == null) {
-					node = new GroupedNode(clId);
-					IObject cl = snapshot.getObject(clId);
-					node.label = cl.getClassSpecificName();
-					if (node.label == null)
-						node.label = cl.getTechnicalName();
-
-					classLoader2node.put(clId, node);
-				}
-
-				node.objects.add(dominatedId);
-				node.retainedHeap += snapshot.getRetainedHeapSize(dominatedId);
-
-				if (ii % 100 == 0 && listener.isCanceled())
-					throw new IProgressListener.OperationCanceledException();
-			}
-
-			return Arrays.asList(classLoader2node.getAllValues());
-		}
-
-		static List<?> prepare(ISnapshot snapshot, IProgressListener listener) throws SnapshotException {
-			return prepareSet(snapshot, snapshot.getImmediateDominatedIds(-1), listener);
-		}
-
-		private List<?> classLoader;
-		private CollectionHeapResolverRegistry collectionHeapResolver;
-
-		private ClassLoaderTree(ISnapshot snapshot, int[] roots, List<?> classLoader) {
-			super(snapshot, roots, Grouping.BY_CLASSLOADER);
-			this.collectionHeapResolver = CollectionHeapResolverRegistry.getInstance();
-			this.classLoader = classLoader;
-		}
-
-		public Column[] getColumns() {
-			return new Column[] { new Column(Messages.Column_ClassLoaderName, String.class),
-					new Column(Messages.Column_Objects, int.class), new Column(Messages.Column_ShallowHeap, int.class),
-					new Column(Messages.Column_RetainedHeap, long.class).sorting(SortDirection.DESC),
-					new Column(Messages.Column_Percentage, double.class)
-							.formatting(new java.text.DecimalFormat("0.00%")) };
-		}
-
-		public List<?> getElements() {
-			return classLoader;
-		}
-
-		public boolean hasChildren(Object element) {
-			if (element instanceof GroupedNode)
-				return true;
-			else
-				return false;
-		}
-
-		public List<?> getChildren(Object parent) {
-			if (parent instanceof ClassNode) {
-				return objects((ClassNode) parent);
-			} else if (parent instanceof GroupedNode) {
-				return histogram(((GroupedNode) parent).objects);
-			} else {
-				return null;
-			}
-		}
-
-		private List<Node> objects(ClassNode parent) {
-			List<Node> nodes = new ArrayList<Node>();
-			for (IteratorInt iter = parent.objects.iterator(); iter.hasNext();)
-				nodes.add(new Node(iter.next()));
-			return nodes;
-		}
-
-		private List<?> histogram(ArrayInt objectIds) {
-			try {
-				HashMapIntObject<ClassNode> class2node = new HashMapIntObject<ClassNode>();
-
-				for (int ii = 0; ii < objectIds.size(); ii++) {
-					int objectId = objectIds.get(ii);
-					IClass clazz = snapshot.getClassOf(objectId);
-					ClassNode node = class2node.get(clazz.getObjectId());
-
-					if (node == null) {
-						node = new ClassNode(clazz.getObjectId());
-						node.label = clazz.getName();
-						class2node.put(node.objectId, node);
-					}
-
-					node.objects.add(objectId);
-					node.retainedHeap += snapshot.getRetainedHeapSize(objectId);
-				}
-
-				return Arrays.asList(class2node.getAllValues());
-			} catch (SnapshotException e) {
-				throw new RuntimeException(e);
-			}
-		}
-
-		public Object getColumnValue(Object row, int columnIndex) {
-			try {
-				Node node = (Node) row;
-
-				// reloading is done only for non-class nodes
-				switch (columnIndex) {
-				case 0:
-					if (node.label == null) {
-						IObject obj = snapshot.getObject(node.objectId);
-						node.label = obj.getDisplayName();
-					}
-					return node.label;
-				case 1:
-					if (node.size == -1) {
-						IObject obj = snapshot.getObject(node.objectId);
-						node.size = collectionHeapResolver.getCollectionSize(obj);
-					}
-					return node.size;
-				case 2:
-					if (node.retainedHeap == -1) {
-						IObject obj = snapshot.getObject(node.objectId);
-						node.retainedHeap = collectionHeapResolver.getCollectionHeapSize(obj);
-					}
-					return node.retainedHeap;
-				case 3:
-					if (node.retainedHeap == -1) {
-						IObject obj = snapshot.getObject(node.objectId);
-						node.retainedHeap = collectionHeapResolver.getCollectionHeapSize(obj);
-					}
-					return node.retainedHeap / totalHeap;
-				}
-
-				return null;
-			} catch (SnapshotException e) {
-				throw new RuntimeException(e);
-			}
-		}
-
-		public IContextObject getContext(final Object row) {
-			if (row instanceof GroupedNode) {
-
-				return new IContextObjectSet() {
-					public int getObjectId() {
-						return ((Node) row).objectId;
-					}
-
-					public int[] getObjectIds() {
-						return ((GroupedNode) row).objects.toArray();
-					}
-
-					public String getOQL() {
-						return null;
-					}
-				};
-			} else {
-				return new IContextObject() {
-					public int getObjectId() {
-						return ((Node) row).objectId;
-					}
-				};
-			}
-		}
-
-	}
-
-	private static class PackageTree extends Tree {
-		public static PackageNode prepare(ISnapshot snapshot, IProgressListener listener) throws SnapshotException {
-			return prepareSet(snapshot, snapshot.getImmediateDominatedIds(-1), listener);
-		}
-
-		public static PackageNode prepareSet(ISnapshot snapshot, int[] roots, IProgressListener listener)
-				throws SnapshotException {
-			PackageNode root = new PackageNode(Messages.CollectionQuery_LabelAll);
-			PackageNode current;
-
-			listener.beginTask(Messages.CollectionQuery_Msg_Grouping, roots.length / 100);
-			int index = 0;
-			for (int dominatorId : roots) {
-				if (listener.isCanceled())
-					throw new IProgressListener.OperationCanceledException();
-
-				long retainedHeap = snapshot.getRetainedHeapSize(dominatorId);
-
-				current = root;
-
-				// for classes take their name instead of java.lang.Class
-				IClass objClass = snapshot.isClass(dominatorId) ? (IClass) snapshot.getObject(dominatorId)
-						: snapshot.getClassOf(dominatorId);
-
-				String className = objClass.getName();
-
-				StringTokenizer tokenizer = new StringTokenizer(className, ".");
-
-				while (tokenizer.hasMoreTokens()) {
-					String subpack = tokenizer.nextToken();
-					PackageNode childNode = current.subPackages.get(subpack);
-
-					if (childNode == null) {
-						childNode = new PackageNode(subpack);
-						current.subPackages.put(subpack, childNode);
-					}
-
-					childNode.objects.add(dominatorId);
-					childNode.retainedHeap += retainedHeap;
-
-					current = childNode;
-				}
-
-				if (++index % 100 == 0)
-					listener.worked(1);
-			}
-
-			listener.done();
-			return root;
-		}
-
-		private PackageNode invisibleRoot;
-
-		private PackageTree(ISnapshot snapshot, int[] roots, PackageNode invisibleRoot) {
-			super(snapshot, roots, Grouping.BY_PACKAGE);
-			this.invisibleRoot = invisibleRoot;
-		}
-
-		public Column[] getColumns() {
-			return new Column[] { new Column(Messages.Column_ClassName, String.class),
-					new Column(Messages.Column_Objects, int.class), new Column(Messages.Column_ShallowHeap, int.class),
-					new Column(Messages.Column_RetainedHeap, long.class).sorting(SortDirection.DESC),
-					new Column(Messages.Column_Percentage, double.class)
-							.formatting(new java.text.DecimalFormat("0.00%")) };
-		}
-
-		public List<?> getElements() {
-			return new ArrayList<PackageNode>(invisibleRoot.subPackages.values());
-		}
-
-		public boolean hasChildren(Object element) {
-			return !((PackageNode) element).subPackages.isEmpty();
-		}
-
-		public List<?> getChildren(Object parent) {
-			return new ArrayList<PackageNode>(((PackageNode) parent).subPackages.values());
-		}
-
-		public Object getColumnValue(Object row, int columnIndex) {
-			GroupedNode node = (GroupedNode) row;
-
-			switch (columnIndex) {
-			case 0:
-				return node.label;
-			case 1:
-				return node.objects.size();
-			case 2:
-				return node.size;
-			case 3:
-				return node.retainedHeap;
-			case 4:
-				return node.retainedHeap / totalHeap;
-			}
-
-			return null;
-		}
-
-		public IContextObject getContext(final Object row) {
-			return new IContextObjectSet() {
-				public int getObjectId() {
-					return ((Node) row).objectId;
-				}
-
-				public int[] getObjectIds() {
-					return ((GroupedNode) row).objects.toArray();
-				}
-
-				public String getOQL() {
-					return null;
-				}
-			};
-		}
-	}
 
 }

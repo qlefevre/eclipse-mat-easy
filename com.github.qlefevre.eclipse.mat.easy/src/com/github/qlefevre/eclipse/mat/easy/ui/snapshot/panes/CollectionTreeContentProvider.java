@@ -2,6 +2,7 @@ package com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes;
 
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
@@ -29,24 +30,28 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 	}
 
 	@Override
-	public Object[] getChildren(Object arg0) {
+	public Object[] getChildren(Object node) {
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
-		List<Object> nodes = (List<Object>) tree.getChildren(arg0);
+		List<Object> nodes = (List<Object>) tree.getChildren(node);
 		// Filter by percentage
 		Object[] children = nodes.stream().filter(predicate(tree)).toArray();
 		// No children ?
 		if (children.length == 0) {
-			children = nodes.stream().limit(CHILDREN_LIMIT).toArray();
+			List<Object> objects = nodes.stream().limit(CHILDREN_LIMIT).collect(Collectors.toList());
+			if(objects.size() == CHILDREN_LIMIT) {
+				objects.add("Total: "+nodes.size()+" entries");
+			}
+			children = objects.toArray();
 		}
 		return children;
 	}
 
 	@Override
-	public Object[] getElements(Object arg0) {
+	public Object[] getElements(Object node) {
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
-		List<Object> nodes = ((List<Object>) arg0);
+		List<Object> nodes = ((List<Object>) node);
 		// Filter by percentage
 		Object[] children = nodes.stream().filter(predicate(tree)).toArray();
 
@@ -54,20 +59,23 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 	}
 
 	@Override
-	public Object getParent(Object arg0) {
+	public Object getParent(Object node) {
 		return null;
 	}
 
 	@Override
-	public boolean hasChildren(Object arg0) {
+	public boolean hasChildren(Object node) {
+		if(node instanceof String) {
+			return false;
+		}
 		final Tree tree = pane.getTree();
 		@SuppressWarnings("unchecked")
-		List<Object> nodes = (List<Object>) tree.getChildren(arg0);
+		List<Object> nodes = (List<Object>) tree.getChildren(node);
 		// Has children ?
-		boolean hasChildren = nodes.stream().anyMatch(predicate(tree));
+		boolean hasChildren = nodes.parallelStream().anyMatch(predicate(tree));
 		// No children ?
 		if (!hasChildren) {
-			hasChildren = getChildren(arg0).length > 0;
+			hasChildren = getChildren(node).length > 0;
 		}
 		return hasChildren;
 	}

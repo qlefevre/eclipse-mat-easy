@@ -2,10 +2,16 @@ package com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes;
 
 import java.text.DecimalFormat;
 
+import org.eclipse.jface.resource.FontDescriptor;
+import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.mat.query.BytesFormat;
 import org.eclipse.mat.ui.MemoryAnalyserPlugin;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
+
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionHeapResolverRegistry.*;
 import com.github.qlefevre.eclipse.mat.easy.EclipseMatEasyPlugin;
 
@@ -24,6 +30,9 @@ public class CollectionTreeLabelProvider extends ColumnLabelProvider {
 
 	@Override
 	public String getText(Object element) {
+		if (element instanceof String) {
+			return column == 0 ? (String) element : "";
+		}
 		String text = "";
 		switch (column) {
 		case 0:
@@ -46,11 +55,14 @@ public class CollectionTreeLabelProvider extends ColumnLabelProvider {
 		}
 		return text;
 	}
-	
-	
+
 	@Override
 	public Image getImage(Object element) {
+
 		if (column == 0) {
+			if (element instanceof String) {
+				return EclipseMatEasyPlugin.getImage(EclipseMatEasyPlugin.SUM);
+			}
 			switch ((byte) pane.getTree().getColumnValue(element, -1)) {
 			case TYPE_LIST:
 				return EclipseMatEasyPlugin.getImage(EclipseMatEasyPlugin.LIST);
@@ -66,9 +78,17 @@ public class CollectionTreeLabelProvider extends ColumnLabelProvider {
 				return EclipseMatEasyPlugin.getImage(EclipseMatEasyPlugin.NUMBER);
 			}
 			return MemoryAnalyserPlugin.getImage(MemoryAnalyserPlugin.ISharedImages.CLASS);
-		} else {
-			return null;
 		}
+		return null;
+	}
+
+	@Override
+	public Font getFont(Object element) {
+		Font font = super.getFont(element);
+		if (element instanceof String) {
+			font =  JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT);
+		}
+		return font;
 	}
 
 }

@@ -34,6 +34,7 @@ public class EclipseMatEasyPlugin extends AbstractUIPlugin {
 	public static final String ARRAY = PREFIX + "array.gif"; //$NON-NLS-1$
 	public static final String STRING = PREFIX + "string.png"; //$NON-NLS-1$
 	public static final String NUMBER = PREFIX + "number.png"; //$NON-NLS-1$
+	public static final String SUM = PREFIX + "sum.gif"; //$NON-NLS-1$
 	
 	private static EclipseMatEasyPlugin plugin;
 
