@@ -7,3 +7,6 @@ This plugin provides a new view **Collection tree**
 ![alt text](/doc/collection_tree_view.png "Collection tree view")
 
 You can access it with this new action in toolbar: ![alt text](/doc/collection_tree.gif "Collection tree view")
+
+This view is quite similar to the Dominator Tree. 
+For each object, you have its size if it's a Collection, retained heap and percentage of total heap used. 
