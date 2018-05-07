@@ -10,6 +10,7 @@
 package com.github.qlefevre.eclipse.mat.test.heapdump;
 
 import java.util.Collection;
+import java.util.Map;
 
 /**
  * Object BagB use to retain Heap
@@ -22,6 +23,12 @@ public class BagB implements IBag {
 	 * String values
 	 */
 	private Collection<String> values;
+	
+	/**
+	 * String map
+	 */
+	private Map<String,String> map;
+
 
 	private final IBag bag;
 
@@ -39,7 +46,13 @@ public class BagB implements IBag {
 	public void setValues(Collection<String> values) {
 		this.values = values;
 	}
+	public Map<String, String> getMap() {
+		return map;
+	}
 
+	public void setMap(Map<String, String> map) {
+		this.map = map;
+	}
 	@Override
 	public IBag getBag() {
 		return bag;

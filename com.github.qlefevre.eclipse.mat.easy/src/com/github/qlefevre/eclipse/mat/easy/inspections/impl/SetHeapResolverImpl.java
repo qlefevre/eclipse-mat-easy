@@ -15,13 +15,16 @@ import org.eclipse.mat.snapshot.model.IObject;
 
 import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
 import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapResolver;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_HASHSET;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_TREESET;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_LINKEDHASHSET;
 
 /**
  * 
  * @author Quentin Lefèvre
  *
  */
-@Subjects(value = { "java.util.HashSet", "java.util.TreeSet", "java.util.LinkedHashSet" })
+@Subjects(value = { JAVA_UTIL_HASHSET, JAVA_UTIL_TREESET, JAVA_UTIL_LINKEDHASHSET })
 public class SetHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
 
 	@Override

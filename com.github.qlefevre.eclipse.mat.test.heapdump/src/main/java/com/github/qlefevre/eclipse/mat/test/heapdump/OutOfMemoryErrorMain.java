@@ -11,8 +11,14 @@ package com.github.qlefevre.eclipse.mat.test.heapdump;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  * Main program
@@ -29,8 +35,15 @@ public class OutOfMemoryErrorMain {
 		BagC bagContainer = new BagC(null);
 		bagContainer.getBags().add(createBagsTree(new ArrayList<String>()));
 		bagContainer.getBags().add(createBagsTree(new LinkedList<String>()));
+		
 		bagContainer.getBags().add(createBagsTree(new HashSet<String>()));
-
+		bagContainer.getBags().add(createBagsTree(new TreeSet<String>()));
+		bagContainer.getBags().add(createBagsTree(new LinkedHashSet<String>()));
+		
+		bagContainer.getBags().add(createBagsTree(new HashMap<String,String>()));
+		bagContainer.getBags().add(createBagsTree(new TreeMap<String,String>()));
+		bagContainer.getBags().add(createBagsTree(new LinkedHashMap<String,String>()));
+		
 		int i = 0;
 		while (1 < 2) {
 			for (IBag bag : bagContainer.getBags()) {
@@ -41,9 +54,17 @@ public class OutOfMemoryErrorMain {
 	}
 
 	private static IBag createBagsTree(Collection<String> collection) {
-		BagC bagC = new BagC(null);
 		BagB bagB = new BagB(null);
 		bagB.setValues(collection);
+		IBag bag = new BagA(bagB);
+		bag = new BagC(bag);
+		bag = new BagA(bag);
+		return bag;
+	}
+	
+	private static IBag createBagsTree(Map<String,String> map) {
+		BagB bagB = new BagB(null);
+		bagB.setMap(map);
 		IBag bag = new BagA(bagB);
 		bag = new BagC(bag);
 		bag = new BagA(bag);

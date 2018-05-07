@@ -15,13 +15,19 @@ import org.eclipse.mat.snapshot.model.IObject;
 
 import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
 import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapResolver;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_ARRAYLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_ARRAYS_ARRAYLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_HASHMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_LINKEDHASHMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_LINKEDLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_TREEMAP;
 
 /**
  * 
  * @author Quentin Lefèvre
  *
  */
-@Subjects(value = { "java.util.HashMap", "java.util.TreeMap", "java.util.LinkedHashMap",
+@Subjects(value = { JAVA_UTIL_HASHMAP,  JAVA_UTIL_TREEMAP, JAVA_UTIL_LINKEDHASHMAP,
 		"java.util.concurrent.ConcurrentHashMap", "org.apache.commons.collections.map.LinkedMap" })
 public class MapHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
 

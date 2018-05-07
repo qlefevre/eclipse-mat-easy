@@ -15,24 +15,20 @@ import org.eclipse.mat.snapshot.model.IObject;
 
 import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
 import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapResolver;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_ARRAYLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_ARRAYS_ARRAYLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_HASHMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_LINKEDHASHMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_LINKEDLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_TREEMAP;
 
 /**
  * 
  * @author Quentin Lefèvre
  *
  */
-@Subjects(value = { "java.util.ArrayList", "java.util.LinkedList" })
+@Subjects(value = {JAVA_UTIL_ARRAYLIST, JAVA_UTIL_LINKEDLIST, JAVA_UTIL_ARRAYS_ARRAYLIST })
 public class ListHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
-
-	@Override
-	public long getCollectionHeapSize(IObject object) throws SnapshotException {
-		long heap = object.getRetainedHeapSize();
-		/*
-		 * for (NamedReference ref : object.getOutboundReferences()) { heap +=
-		 * ref.getObject().getRetainedHeapSize(); }
-		 */
-		return heap;
-	}
 
 	@Override
 	public byte getType(IObject object) throws SnapshotException {

@@ -7,9 +7,9 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  *******************************************************************************/
-package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
+package com.github.qlefevre.eclipse.mat.easy.inspections;
 
-public class ListImplementations {
+public class CollectionImplementations {
 
 	public static final String JAVA_UTIL_ARRAYLIST = "java.util.ArrayList";
 
@@ -17,13 +17,16 @@ public class ListImplementations {
 
 	public static final String JAVA_UTIL_ARRAYS_ARRAYLIST = "java.util.Arrays$ArrayList";
 
-	public static final String[] IMPLEMENTATIONS = new String[] { JAVA_UTIL_ARRAYLIST, JAVA_UTIL_LINKEDLIST,
-			JAVA_UTIL_ARRAYS_ARRAYLIST };
-
 	public static final String JAVA_UTIL_HASHMAP = "java.util.HashMap";
 
 	public static final String JAVA_UTIL_TREEMAP = "java.util.TreeMap";
 
 	public static final String JAVA_UTIL_LINKEDHASHMAP = "java.util.LinkedHashMap";
+	
+	public static final String JAVA_UTIL_HASHSET = "java.util.HashSet";
 
+	public static final String JAVA_UTIL_TREESET ="java.util.TreeSet";
+	
+	public static final String JAVA_UTIL_LINKEDHASHSET ="java.util.LinkedHashSet";
+	
 }
