@@ -10,3 +10,8 @@ You can access it with this new action in toolbar: ![alt text](/doc/collection_t
 
 This view is quite similar to the Dominator Tree ![alt text](/doc/dominator_tree.gif "Dominator tree view")
 For each object, you have its size if it's a Collection, retained heap and percentage of total heap used. 
+
+View uses default *IClassSpecificNameResolver* instances to display name as in the Dominator Tree.
+However *"Collection"* instances like *java.util.List*, *java.util.Set* or *java.util.Map* are displayed differently to show the refered field in the problematic class. 
+
+In example : You can see that field List<String> values in class com.github.qlefevre.eclipse.mat.test.heapdump.BagB retains 37.81% of total heap.
