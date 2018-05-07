@@ -9,25 +9,26 @@
  *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_CONCURRENT_CONCURRENTHASHMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_HASHMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_LINKEDHASHMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_TREEMAP;
+
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.snapshot.extension.Subjects;
 import org.eclipse.mat.snapshot.model.IObject;
 
 import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
 import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapResolver;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_ARRAYLIST;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_ARRAYS_ARRAYLIST;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_HASHMAP;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_LINKEDHASHMAP;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_LINKEDLIST;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_TREEMAP;
 
 /**
  * 
  * @author Quentin Lefèvre
  *
  */
-@Subjects(value = { JAVA_UTIL_HASHMAP,  JAVA_UTIL_TREEMAP, JAVA_UTIL_LINKEDHASHMAP,
+@Subjects(value = { JAVA_UTIL_HASHMAP, JAVA_UTIL_TREEMAP, JAVA_UTIL_LINKEDHASHMAP,
+		JAVA_UTIL_CONCURRENT_CONCURRENTHASHMAP, JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTMAP,
 		"java.util.concurrent.ConcurrentHashMap", "org.apache.commons.collections.map.LinkedMap" })
 public class MapHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
 

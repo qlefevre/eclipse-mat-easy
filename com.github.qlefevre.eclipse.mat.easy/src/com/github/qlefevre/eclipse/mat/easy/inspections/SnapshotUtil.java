@@ -21,7 +21,7 @@ import org.eclipse.mat.snapshot.model.NamedReference;
 public final class SnapshotUtil {
 
 	private static final String UNKNOWN_REF_JAVA_LOCAL = "<Java Local>";
-	private static final String UNKNOWN_REF = "var?";
+	private static final String UNKNOWN_REF = "localVar";
 
 	/**
 	 * Default constructor

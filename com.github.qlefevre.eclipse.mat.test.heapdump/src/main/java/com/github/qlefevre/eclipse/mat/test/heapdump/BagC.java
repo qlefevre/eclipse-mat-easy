@@ -10,6 +10,7 @@
 package com.github.qlefevre.eclipse.mat.test.heapdump;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -19,14 +20,14 @@ import java.util.List;
  */
 public class BagC implements IBag {
 
-	private final List<IBag> bags = new ArrayList<>();
+	private List<IBag> bags = new ArrayList<>();
 
 	/**
 	 * Default constructor
 	 */
 	public BagC(IBag bag) {
 		if (bag != null)
-			bags.add(bag);
+			bags = Arrays.asList(bag);
 	}
 
 	public List<IBag> getBags() {

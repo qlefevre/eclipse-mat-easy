@@ -22,11 +22,17 @@ public class CollectionImplementations {
 	public static final String JAVA_UTIL_TREEMAP = "java.util.TreeMap";
 
 	public static final String JAVA_UTIL_LINKEDHASHMAP = "java.util.LinkedHashMap";
-	
+
+	public static final String JAVA_UTIL_CONCURRENT_CONCURRENTHASHMAP = "java.util.concurrent.ConcurrentHashMap";
+
+	public static final String JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTMAP = "java.util.concurrent.ConcurrentSkipListMap";
+
 	public static final String JAVA_UTIL_HASHSET = "java.util.HashSet";
 
-	public static final String JAVA_UTIL_TREESET ="java.util.TreeSet";
-	
-	public static final String JAVA_UTIL_LINKEDHASHSET ="java.util.LinkedHashSet";
-	
+	public static final String JAVA_UTIL_TREESET = "java.util.TreeSet";
+
+	public static final String JAVA_UTIL_LINKEDHASHSET = "java.util.LinkedHashSet";
+
+	public static final String JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTSET = "java.util.concurrent.ConcurrentSkipListSet";
+
 }

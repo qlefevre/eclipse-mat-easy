@@ -9,28 +9,35 @@
  *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTSET;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_HASHSET;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_LINKEDHASHSET;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_TREESET;
+
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.snapshot.extension.Subjects;
 import org.eclipse.mat.snapshot.model.IObject;
 
 import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
 import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapResolver;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_HASHSET;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_TREESET;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_LINKEDHASHSET;
 
 /**
  * 
  * @author Quentin Lefèvre
  *
  */
-@Subjects(value = { JAVA_UTIL_HASHSET, JAVA_UTIL_TREESET, JAVA_UTIL_LINKEDHASHSET })
+@Subjects(value = { JAVA_UTIL_HASHSET, JAVA_UTIL_TREESET, JAVA_UTIL_LINKEDHASHSET,
+		JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTSET })
 public class SetHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
 
 	@Override
 	public int getCollectionSize(IObject object) throws SnapshotException {
 		Integer resolvedSize = null;
 		IObject map = (IObject) object.resolveValue("map");
+		// java.util.TreeSet
+		if (map == null) {
+			map = (IObject) object.resolveValue("m");
+		}
 		if (map != null) {
 			resolvedSize = (Integer) map.resolveValue("size");
 		}
