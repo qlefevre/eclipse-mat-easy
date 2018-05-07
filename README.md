@@ -16,4 +16,4 @@ However *"Collection"* instances like *java.util.List*, *java.util.Set* or *java
 
 ![alt text](/doc/collection_tree_view_example.png "HashSet<String> instance example")
 
-In example : You can see that field Collection<String> values in class com.github.qlefevre.eclipse.mat.test.heapdump.BagB retains 37.81% of total heap. Instance HashSet<String> has 63404 elements and retains 8.24 MB.
+In example : You can see that field Collection<String> values in class *com.github.qlefevre.eclipse.mat.test.heapdump.BagB* retains *37.81%* of total heap. Instance *java.util.HashSet<String>* has *63404* elements and retains *8.24 MB*.
