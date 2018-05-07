@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<title>dominator_tree.gif\icons\META-INF\org.eclipse.mat.api\plugins - org.eclipse.mat.git - Unnamed repository; edit this file 'description' to name the repository.</title>
+<meta name='generator' content='cgit v1.1'/>
+<meta name='robots' content='index, nofollow'/>
+<link rel='stylesheet' type='text/css' href=''/>
+<link rel='shortcut icon' href='/favicon.ico'/>
+<link rel='alternate' title='Atom feed' href='https://git.eclipse.org/c/mat/org.eclipse.mat.git/atom/plugins/org.eclipse.mat.api/META-INF/icons/dominator_tree.gif?h=master' type='application/atom+xml'/>
+<link rel='vcs-git' href='git://git.eclipse.org/gitroot/mat/org.eclipse.mat.git' title='org.eclipse.mat.git Git repository'/>
+<link rel='vcs-git' href='ssh://git.eclipse.org/gitroot/mat/org.eclipse.mat.git' title='org.eclipse.mat.git Git repository'/>
+<link rel='vcs-git' href='http://git.eclipse.org/gitroot/mat/org.eclipse.mat.git' title='org.eclipse.mat.git Git repository'/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="eclipse.org, Eclipse Foundation, Eclipse, Git, Source code, Source" />
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700,300,600,100" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="/eclipse.org-common/themes/solstice/public/images/favicon.ico"/>
+    <link rel="stylesheet" href="/eclipse.org-common/themes/solstice/public/stylesheets/barebone-footer.min.css">
+    <link rel="stylesheet" type="text/css" href="/cgit.css" media="screen" />
+
+</head>
+<body>
+<div class="barebone-layout">
+<a class="sr-only" href="#content">Skip to main content</a>
+<header role="banner" class="thin-header padding-top-10" id="header-wrapper">
+  <div class="container-fluid">
+    <div class="row" id="header-row">
+      <div class="col-sm-6 col-md-6 col-lg-5" id="header-left">
+        <div class="wrapper-logo-default"><a href="https://www.eclipse.org/"><img class="logo-eclipse-default img-responsive hidden-xs" alt="logo" src="/eclipse.org-common/themes/solstice/public/images/logo/eclipse-426x100.png"/></a></div>
+      </div>
+      <div class="col-sm-18 col-md-18 col-lg-19" id="main-menu-wrapper">
+        <div class="navbar yamm navbar-right" id="main-menu">
+          <div id="navbar-collapse-1" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="visible-thin"><a href="https://www.eclipse.org/downloads/" target="_self">Download</a></li>
+              <li><a href="https://www.eclipse.org/users/" target="_self">Getting Started</a></li>
+              <li><a href="https://www.eclipse.org/membership/" target="_self">Members</a></li>
+              <li><a href="https://www.eclipse.org/projects/" target="_self">Projects</a></li>
+              <li class="dropdown visible-xs">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Community <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://marketplace.eclipse.org">Marketplace</a></li>
+                  <li><a href="http://events.eclipse.org">Events</a></li>
+                  <li><a href="http://www.planeteclipse.org/">Planet Eclipse</a></li>
+                  <li><a href="https://www.eclipse.org/community/eclipse_newsletter/">Newsletter</a></li>
+                  <li><a href="https://www.youtube.com/user/EclipseFdn">Videos</a></li>
+                </ul>
+              </li>
+              <li class="dropdown visible-xs">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Participate <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="https://bugs.eclipse.org/bugs/">Report a Bug</a></li>
+                  <li><a href="https://www.eclipse.org/forums/">Forums</a></li>
+                  <li><a href="https://www.eclipse.org/mail/">Mailing Lists</a></li>
+                  <li><a href="https://wiki.eclipse.org/">Wiki</a></li>
+                  <li><a href="https://wiki.eclipse.org/IRC">IRC</a></li>
+                  <li><a href="https://www.eclipse.org/contribute/">How to Contribute</a></li>
+                </ul>
+              </li>
+              <li class="dropdown visible-xs">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Working Groups <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://wiki.eclipse.org/Auto_IWG">Automotive</a></li>
+                  <li><a href="http://iot.eclipse.org">Internet of Things</a></li>
+                  <li><a href="http://locationtech.org">LocationTech</a></li>
+                  <li><a href="http://lts.eclipse.org">Long-Term Support</a></li>
+                  <li><a href="http://polarsys.org">PolarSys</a></li>
+                  <li><a href="http://science.eclipse.org">Science</a></li>
+                  <li><a href="http://www.openmdm.org">OpenMDM</a></li>
+                </ul>
+              </li>
+              <!-- More -->
+              <li class="dropdown eclipse-more hidden-xs">
+                <a data-toggle="dropdown" class="dropdown-toggle">More<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <!-- Content container to add padding -->
+                    <div class="yamm-content">
+                      <div class="row">
+                        <ul class="col-sm-8 list-unstyled">
+                          <li>
+                            <p><strong>Community</strong></p>
+                          </li>
+                          <li><a href="http://marketplace.eclipse.org">Marketplace</a></li>
+                          <li><a href="http://events.eclipse.org">Events</a></li>
+                          <li><a href="http://www.planeteclipse.org/">Planet Eclipse</a></li>
+                          <li><a href="https://www.eclipse.org/community/eclipse_newsletter/">Newsletter</a></li>
+                          <li><a href="https://www.youtube.com/user/EclipseFdn">Videos</a></li>
+                        </ul>
+                        <ul class="col-sm-8 list-unstyled">
+                          <li>
+                            <p><strong>Participate</strong></p>
+                          </li>
+                          <li><a href="https://bugs.eclipse.org/bugs/">Report a Bug</a></li>
+                          <li><a href="https://www.eclipse.org/forums/">Forums</a></li>
+                          <li><a href="https://www.eclipse.org/mail/">Mailing Lists</a></li>
+                          <li><a href="https://wiki.eclipse.org/">Wiki</a></li>
+                          <li><a href="https://wiki.eclipse.org/IRC">IRC</a></li>
+                          <li><a href="https://www.eclipse.org/contribute/">How to Contribute</a></li>
+                        </ul>
+                        <ul class="col-sm-8 list-unstyled">
+                          <li>
+                            <p><strong>Working Groups</strong></p>
+                          </li>
+                          <li><a href="http://wiki.eclipse.org/Auto_IWG">Automotive</a></li>
+                          <li><a href="http://iot.eclipse.org">Internet of Things</a></li>
+                          <li><a href="http://locationtech.org">LocationTech</a></li>
+                          <li><a href="http://lts.eclipse.org">Long-Term Support</a></li>
+                          <li><a href="http://polarsys.org">PolarSys</a></li>
+                          <li><a href="http://science.eclipse.org">Science</a></li>
+                          <li><a href="http://www.openmdm.org">OpenMDM</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <div class="wrapper-logo-mobile"><a class="navbar-brand visible-xs" href="https://www.eclipse.org/"><img class="logo-eclipse-default-mobile img-responsive" alt="logo" src="/eclipse.org-common/themes/solstice/public/images/logo/eclipse-800x188.png"/></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="hidden-print default-breadcrumbs" id="breadcrumb">
+  <div class="container-fluid">
+    <h3 class="sr-only">Breadcrumbs</h3>
+    <div class="col-xs-24">
+      <ol class="breadcrumb">
+        <li><a href="https://www.eclipse.org/">Home</a></li>
+        <li><a href="https://www.eclipse.org/contribute/">Contribute</a></li>
+        <li><a href="/c/">Source code</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+<main role="main">
+<div class="container-fluid background-image-none" id="novaContent">
+<br /><br />
+<div id='cgit'><table id='header'>
+<tr>
+<td class='logo' rowspan='2'><a href='/c/'><img src='/git.png' alt='cgit logo'/></a></td>
+<td class='main'><a href='/c/'>index</a> : <a title='org.eclipse.mat.git' href='/c/mat/org.eclipse.mat.git/'>org.eclipse.mat.git</a></td><td class='form'><form method='get'>
+<select name='h' onchange='this.form.submit();'>
+<option value='0.7.0'>0.7.0</option>
+<option value='0.8.0'>0.8.0</option>
+<option value='1.0.x'>1.0.x</option>
+<option value='master' selected='selected'>master</option>
+</select> <input type='submit' value='switch'/></form></td></tr>
+<tr><td class='sub'>Unnamed repository; edit this file 'description' to name the repository.</td><td class='sub right'>Genie mat</td></tr></table>
+<table class='tabs'><tr><td>
+<a href='/c/mat/org.eclipse.mat.git/about/'>about</a><a href='/c/mat/org.eclipse.mat.git/'>summary</a><a href='/c/mat/org.eclipse.mat.git/refs/'>refs</a><a href='/c/mat/org.eclipse.mat.git/log/plugins/org.eclipse.mat.api/META-INF/icons/dominator_tree.gif'>log</a><a class='active' href='/c/mat/org.eclipse.mat.git/tree/plugins/org.eclipse.mat.api/META-INF/icons/dominator_tree.gif'>tree</a><a href='/c/mat/org.eclipse.mat.git/commit/plugins/org.eclipse.mat.api/META-INF/icons/dominator_tree.gif'>commit</a><a href='/c/mat/org.eclipse.mat.git/diff/plugins/org.eclipse.mat.api/META-INF/icons/dominator_tree.gif'>diff</a><a href='/c/mat/org.eclipse.mat.git/stats/plugins/org.eclipse.mat.api/META-INF/icons/dominator_tree.gif'>stats</a></td><td class='form'><form class='right' method='get' action='/c/mat/org.eclipse.mat.git/log/plugins/org.eclipse.mat.api/META-INF/icons/dominator_tree.gif'>
+<select name='qt'>
+<option value='grep'>log msg</option>
+<option value='author'>author</option>
+<option value='committer'>committer</option>
+<option value='range'>range</option>
+</select>
+<input class='txt' type='text' size='10' name='q' value=''/>
+<input type='submit' value='search'/>
+</form>
+</td></tr></table>
+<div class='path'>path: <a href='/c/mat/org.eclipse.mat.git/tree/'>root</a>/<a href='/c/mat/org.eclipse.mat.git/tree/plugins'>plugins</a>/<a href='/c/mat/org.eclipse.mat.git/tree/plugins/org.eclipse.mat.api'>org.eclipse.mat.api</a>/<a href='/c/mat/org.eclipse.mat.git/tree/plugins/org.eclipse.mat.api/META-INF'>META-INF</a>/<a href='/c/mat/org.eclipse.mat.git/tree/plugins/org.eclipse.mat.api/META-INF/icons'>icons</a>/<a href='/c/mat/org.eclipse.mat.git/tree/plugins/org.eclipse.mat.api/META-INF/icons/dominator_tree.gif'>dominator_tree.gif</a></div><div class='content'>blob: b96729aa840e464564637cfb9ac0c15fba1274d2 (<a href='/c/mat/org.eclipse.mat.git/plain/plugins/org.eclipse.mat.api/META-INF/icons/dominator_tree.gif'>plain</a>)
+<table summary='blob content' class='bin-blob'>
+<tr><th>ofs</th><th>hex dump</th><th>ascii</th></tr><tr><td class='right'>0000</td><td class='hex'> 47 49 46 38 39 61 10 00 10 00 c4 00 00 28 46 b3    48 6e be 6d 7b 8f 5c 95 be b0 df fe 75 a9 c7 22 </td><td class='hex'>GIF89a.......(F.Hn.m{.\.....u.."</td></tr>
+<tr><td class='right'>0020</td><td class='hex'> 76 4e 7d ae 97 d4 e9 d9 a3 d1 ad 73 b7 79 ae d5    b1 86 bf 80 b9 da b5 98 c7 87 c3 de b9 e6 f1 e0 </td><td class='hex'>vN}........s.y..................</td></tr>
+<tr><td class='right'>0040</td><td class='hex'> ca e1 bc ff ff ff 00 00 00 00 00 00 00 00 00 00    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 </td><td class='hex'>................................</td></tr>
+<tr><td class='right'>0060</td><td class='hex'> 00 00 00 00 00 00 00 00 00 00 00 00 00 21 f9 04    01 00 00 12 00 2c 00 00 00 00 10 00 10 00 00 05 </td><td class='hex'>.............!.......,..........</td></tr>
+<tr><td class='right'>0080</td><td class='hex'> 5a a0 24 1d 46 69 1e 62 9a 1a 50 e4 46 90 a1 aa    c6 e3 dc ce 23 cf a2 d1 30 40 46 63 c7 33 2c 14 </td><td class='hex'>Z.$.Fi.b..P.F.......#...0@Fc.3,.</td></tr>
+<tr><td class='right'>00a0</td><td class='hex'> 48 c5 82 38 33 20 12 d0 04 82 a9 22 99 4a 28 de    4c a0 2a 0c be 05 1e 37 35 20 98 07 62 81 5a 50 </td><td class='hex'>H..83......".J(.L.*....75...b.ZP</td></tr>
+<tr><td class='right'>00c0</td><td class='hex'> 3e 8b 55 01 80 3c f0 d6 6a c7 22 2f b8 2e 6a 13    d0 5b 6b 6c 66 7f 76 29 71 73 21 00 3b </td><td class='hex'>&gt;.U..&lt;..j."/..j..[klf.v)qs!.;</td></tr>
+</table>
+</div> <!-- class=content -->
+</div>
+</main> <!-- /#main-content-container-row -->
+<p id="back-to-top">
+  <a class="visible-xs" href="#top">Back to the top</a>
+</p>
+<footer role="contentinfo" id="solstice-footer">
+  <div class="container">
+    <div class="row">
+      <section class="col-sm-offset-1 col-xs-11 col-sm-7 col-md-6 col-md-offset-0 hidden-print" id="footer-eclipse-foundation">
+            <h2 class="section-title">Eclipse Foundation</h2>
+    <ul class="nav">
+    <li><a href="https://www.eclipse.org/org/">About us</a></li>
+    <li><a href="https://www.eclipse.org/org/foundation/contact.php">Contact Us</a></li>
+    <li><a href="https://www.eclipse.org/donate">Donate</a></li>
+      <li><a href="https://www.eclipse.org/org/documents/">Governance</a></li>
+      <li><a href="https://www.eclipse.org/artwork/">Logo and Artwork</a></li>
+      <li><a href="https://www.eclipse.org/org/foundation/directors.php">Board of Directors</a></li>
+    </ul>      </section>
+      <section class="col-sm-offset-1 col-xs-11 col-sm-7 col-md-6 col-md-offset-0 hidden-print" id="footer-legal">
+            <h2 class="section-title">Legal</h2>
+    <ul class="nav">
+      <li><a href="https://www.eclipse.org/legal/privacy.php">Privacy Policy</a></li>
+      <li><a href="https://www.eclipse.org/legal/termsofuse.php">Terms of Use</a></li>
+      <li><a href="https://www.eclipse.org/legal/copyright.php">Copyright Agent</a></li>
+      <li><a href="https://www.eclipse.org/org/documents/epl-2.0">Eclipse Public License </a></li>
+      <li><a href="https://www.eclipse.org/legal/">Legal Resources </a></li>
+    </ul>      </section>
+      <section class="col-sm-offset-1 col-xs-11 col-sm-7 col-md-6 col-md-offset-0 hidden-print" id="footer-useful-links">
+            <h2 class="section-title">Useful Links</h2>
+    <ul class="nav">
+      <li><a href="https://bugs.eclipse.org/bugs/">Report a Bug</a></li>
+      <li><a href="//help.eclipse.org/">Documentation</a></li>
+      <li><a href="https://www.eclipse.org/contribute/">How to Contribute</a></li>
+      <li><a href="https://www.eclipse.org/mail/">Mailing Lists</a></li>
+      <li><a href="https://www.eclipse.org/forums/">Forums</a></li>
+      <li><a href="//marketplace.eclipse.org">Marketplace</a></li>
+    </ul>      </section>
+      <section class="col-sm-offset-1 col-xs-11 col-sm-7 col-md-6 col-md-offset-0 hidden-print" id="footer-other">
+            <h2 class="section-title">Other</h2>
+    <ul class="nav">
+      <li><a href="https://www.eclipse.org/ide/">IDE and Tools</a></li>
+      <li><a href="https://www.eclipse.org/projects">Community of Projects</a></li>
+      <li><a href="https://www.eclipse.org/org/workinggroups/">Working Groups</a></li>
+      <li><a href="https://wiki.eclipse.org/Ssh_fingerprints">Server fingerprints</a></li>
+    </ul>
+
+    <ul class="list-inline social-media">
+      <li><a href="https://twitter.com/EclipseFdn"><i class="fa fa-twitter-square"></i></a></li>
+      <li><a href="https://plus.google.com/+Eclipse"><i class="fa fa-google-plus-square"></i></a></li>
+      <li><a href="https://www.facebook.com/eclipse.org"><i class="fa fa-facebook-square"></i> </a></li>
+      <li><a href="https://www.youtube.com/user/EclipseFdn"><i class="fa fa-youtube-square"></i></a></li>
+    </ul>      </section>
+            <div id="copyright" class="col-sm-offset-1 col-sm-14 col-md-24 col-md-offset-0">
+        <span class="hidden-print"><div class="wrapper-logo-eclipse-white"><a href="https://www.eclipse.org"><img class="logo-eclipse-white img-responsive" alt="logo" src="/eclipse.org-common/themes/solstice/public/images/logo/eclipse-logo-bw-332x78.png"/></a></div></span>
+        <p id="copyright-text">Copyright &copy; 2017 The Eclipse Foundation. All Rights Reserved.</p>
+      </div>      <a href="#" class="scrollup">Back to the top</a>
+    </div>
+  </div>
+</footer>
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/eclipse.org-common/themes/solstice/public/javascript/main.min.js"></script>
+</div>
+</div> <!-- id=cgit -->
+</body>
+</html>
