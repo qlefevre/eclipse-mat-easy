@@ -61,4 +61,37 @@ public class CollectionImplementations {
 	public static final String ORG_APACHE_COMMONS_COLLECTIONS_MAP_TRANSFORMEDMAP = "org.apache.commons.collections.map.TransformedMap";
 	public static final String ORG_APACHE_COMMONS_COLLECTIONS_MAP_PREDICATEDMAP = "org.apache.commons.collections.map.PredicatedMap";
 
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_LIST_CURSORABLELINKEDLIST = "org.apache.commons.collections4.list.CursorableLinkedList";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_LIST_NODECACHINGLINKEDLIST = "org.apache.commons.collections4.list.NodeCachingLinkedList";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_LIST_TREELIST = "org.apache.commons.collections4.list.TreeList";
+
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_LIST_GROWTHLIST = "org.apache.commons.collections4.list.GrowthList";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_LIST_FIXEDSIZELIST = "org.apache.commons.collections4.list.FixedSizeList";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_LIST_LAZYLIST = "org.apache.commons.collections4.list.LazyList";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_LIST_SETUNIQUELIST = "org.apache.commons.collections4.list.SetUniqueList";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_LIST_UNMODIFIABLELIST = "org.apache.commons.collections4.list.UnmodifiableList";
+
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_SET_LISTORDEREDSET = "org.apache.commons.collections4.set.ListOrderedSet";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_SET_UNMODIFIABLESET = "org.apache.commons.collections4.set.UnmodifiableSet";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_SET_UNMODIFIABLESORTEDSET = "org.apache.commons.collections4.set.UnmodifiableSortedSet";
+
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_FLAT3MAP = "org.apache.commons.collections4.map.Flat3Map";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_LRUMAP = "org.apache.commons.collections4.map.LRUMap";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_REFERENCEIDENTITYMAP = "org.apache.commons.collections4.map.ReferenceIdentityMap";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_STATICBUCKETMAP = "org.apache.commons.collections4.map.StaticBucketMap";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_HASHEDMAP = "org.apache.commons.collections4.map.HashedMap";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_LINKEDMAP = "org.apache.commons.collections4.map.LinkedMap";
+
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_DEFAULTEDMAP = "org.apache.commons.collections4.map.DefaultedMap";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_FIXEDSIZEMAP = "org.apache.commons.collections4.map.FixedSizeMap";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_LAZYMAP = "org.apache.commons.collections4.map.LazyMap";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_LISTORDEREDMAP = "org.apache.commons.collections4.map.ListOrderedMap";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_MULTIVALUEMAP = "org.apache.commons.collections4.map.MultiValueMap";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_UNMODIFIABLEMAP = "org.apache.commons.collections4.map.UnmodifiableMap";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_FIXEDSIZESORTEDMAP = "org.apache.commons.collections4.map.FixedSizeSortedMap";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_UNMODIFIABLESORTEDMAP = "org.apache.commons.collections4.map.UnmodifiableSortedMap";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_UNMODIFIABLEORDEREDMAP = "org.apache.commons.collections4.map.UnmodifiableOrderedMap";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_TRANSFORMEDMAP = "org.apache.commons.collections4.map.TransformedMap";
+	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_PREDICATEDMAP = "org.apache.commons.collections4.map.PredicatedMap";
+
 }

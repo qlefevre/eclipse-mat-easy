@@ -9,6 +9,12 @@
  *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_FLAT3MAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_HASHEDMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_LINKEDMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_LRUMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_REFERENCEIDENTITYMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_STATICBUCKETMAP;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_MAP_FLAT3MAP;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_MAP_HASHEDMAP;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_MAP_LINKEDMAP;
@@ -30,7 +36,13 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
  */
 @Subjects(value = { ORG_APACHE_COMMONS_COLLECTIONS_MAP_FLAT3MAP, ORG_APACHE_COMMONS_COLLECTIONS_MAP_LRUMAP,
 		ORG_APACHE_COMMONS_COLLECTIONS_MAP_REFERENCEIDENTITYMAP, ORG_APACHE_COMMONS_COLLECTIONS_MAP_STATICBUCKETMAP,
-		ORG_APACHE_COMMONS_COLLECTIONS_MAP_HASHEDMAP, ORG_APACHE_COMMONS_COLLECTIONS_MAP_LINKEDMAP })
+		ORG_APACHE_COMMONS_COLLECTIONS_MAP_HASHEDMAP, ORG_APACHE_COMMONS_COLLECTIONS_MAP_LINKEDMAP,
+
+		ORG_APACHE_COMMONS_COLLECTIONS4_MAP_FLAT3MAP, ORG_APACHE_COMMONS_COLLECTIONS4_MAP_LRUMAP,
+		ORG_APACHE_COMMONS_COLLECTIONS4_MAP_REFERENCEIDENTITYMAP, ORG_APACHE_COMMONS_COLLECTIONS4_MAP_STATICBUCKETMAP,
+		ORG_APACHE_COMMONS_COLLECTIONS4_MAP_HASHEDMAP, ORG_APACHE_COMMONS_COLLECTIONS4_MAP_LINKEDMAP
+
+})
 public class ApacheCommonsCollectionsMapHeapResolverImpl extends AbstractCollectionHeapResolver
 		implements ICollectionHeapResolver {
 

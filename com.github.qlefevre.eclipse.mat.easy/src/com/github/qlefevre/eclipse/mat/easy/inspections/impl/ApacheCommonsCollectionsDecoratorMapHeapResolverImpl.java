@@ -9,6 +9,17 @@
  *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_DEFAULTEDMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_FIXEDSIZEMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_FIXEDSIZESORTEDMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_LAZYMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_LISTORDEREDMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_MULTIVALUEMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_PREDICATEDMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_TRANSFORMEDMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_UNMODIFIABLEMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_UNMODIFIABLEORDEREDMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_MAP_UNMODIFIABLESORTEDMAP;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_MAP_DEFAULTEDMAP;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_MAP_FIXEDSIZEMAP;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_MAP_FIXEDSIZESORTEDMAP;
@@ -38,7 +49,15 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
 		ORG_APACHE_COMMONS_COLLECTIONS_MAP_MULTIVALUEMAP, ORG_APACHE_COMMONS_COLLECTIONS_MAP_UNMODIFIABLEMAP,
 		ORG_APACHE_COMMONS_COLLECTIONS_MAP_FIXEDSIZESORTEDMAP, ORG_APACHE_COMMONS_COLLECTIONS_MAP_UNMODIFIABLESORTEDMAP,
 		ORG_APACHE_COMMONS_COLLECTIONS_MAP_UNMODIFIABLEORDEREDMAP, ORG_APACHE_COMMONS_COLLECTIONS_MAP_TRANSFORMEDMAP,
-		ORG_APACHE_COMMONS_COLLECTIONS_MAP_PREDICATEDMAP })
+		ORG_APACHE_COMMONS_COLLECTIONS_MAP_PREDICATEDMAP,
+
+		ORG_APACHE_COMMONS_COLLECTIONS4_MAP_DEFAULTEDMAP, ORG_APACHE_COMMONS_COLLECTIONS4_MAP_FIXEDSIZEMAP,
+		ORG_APACHE_COMMONS_COLLECTIONS4_MAP_LAZYMAP, ORG_APACHE_COMMONS_COLLECTIONS4_MAP_LISTORDEREDMAP,
+		ORG_APACHE_COMMONS_COLLECTIONS4_MAP_MULTIVALUEMAP, ORG_APACHE_COMMONS_COLLECTIONS4_MAP_UNMODIFIABLEMAP,
+		ORG_APACHE_COMMONS_COLLECTIONS4_MAP_FIXEDSIZESORTEDMAP,
+		ORG_APACHE_COMMONS_COLLECTIONS4_MAP_UNMODIFIABLESORTEDMAP,
+		ORG_APACHE_COMMONS_COLLECTIONS4_MAP_UNMODIFIABLEORDEREDMAP, ORG_APACHE_COMMONS_COLLECTIONS4_MAP_TRANSFORMEDMAP,
+		ORG_APACHE_COMMONS_COLLECTIONS4_MAP_PREDICATEDMAP })
 public class ApacheCommonsCollectionsDecoratorMapHeapResolverImpl extends AbstractCollectionHeapResolver
 		implements ICollectionHeapResolver {
 

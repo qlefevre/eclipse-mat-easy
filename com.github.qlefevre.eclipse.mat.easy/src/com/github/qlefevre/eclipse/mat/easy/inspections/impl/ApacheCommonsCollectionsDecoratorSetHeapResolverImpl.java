@@ -9,6 +9,9 @@
  *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_SET_LISTORDEREDSET;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_SET_UNMODIFIABLESET;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_SET_UNMODIFIABLESORTEDSET;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_SET_LISTORDEREDSET;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_SET_UNMODIFIABLESET;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_SET_UNMODIFIABLESORTEDSET;
@@ -26,7 +29,11 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
  * @author Quentin Lefèvre
  */
 @Subjects(value = { ORG_APACHE_COMMONS_COLLECTIONS_SET_LISTORDEREDSET,
-		ORG_APACHE_COMMONS_COLLECTIONS_SET_UNMODIFIABLESET, ORG_APACHE_COMMONS_COLLECTIONS_SET_UNMODIFIABLESORTEDSET })
+		ORG_APACHE_COMMONS_COLLECTIONS_SET_UNMODIFIABLESET, ORG_APACHE_COMMONS_COLLECTIONS_SET_UNMODIFIABLESORTEDSET,
+		ORG_APACHE_COMMONS_COLLECTIONS4_SET_LISTORDEREDSET, ORG_APACHE_COMMONS_COLLECTIONS4_SET_UNMODIFIABLESET,
+		ORG_APACHE_COMMONS_COLLECTIONS4_SET_UNMODIFIABLESORTEDSET
+
+})
 public class ApacheCommonsCollectionsDecoratorSetHeapResolverImpl extends AbstractCollectionHeapResolver
 		implements ICollectionHeapResolver {
 

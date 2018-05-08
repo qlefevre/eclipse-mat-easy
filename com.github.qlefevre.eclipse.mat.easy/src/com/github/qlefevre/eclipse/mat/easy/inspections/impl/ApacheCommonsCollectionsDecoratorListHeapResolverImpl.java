@@ -9,6 +9,11 @@
  *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_LIST_FIXEDSIZELIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_LIST_GROWTHLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_LIST_LAZYLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_LIST_SETUNIQUELIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_LIST_UNMODIFIABLELIST;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_LIST_FIXEDSIZELIST;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_LIST_GROWTHLIST;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_LIST_LAZYLIST;
@@ -29,7 +34,13 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
  */
 @Subjects(value = { ORG_APACHE_COMMONS_COLLECTIONS_LIST_GROWTHLIST, ORG_APACHE_COMMONS_COLLECTIONS_LIST_FIXEDSIZELIST,
 		ORG_APACHE_COMMONS_COLLECTIONS_LIST_LAZYLIST, ORG_APACHE_COMMONS_COLLECTIONS_LIST_SETUNIQUELIST,
-		ORG_APACHE_COMMONS_COLLECTIONS_LIST_UNMODIFIABLELIST })
+		ORG_APACHE_COMMONS_COLLECTIONS_LIST_UNMODIFIABLELIST,
+
+		ORG_APACHE_COMMONS_COLLECTIONS4_LIST_GROWTHLIST, ORG_APACHE_COMMONS_COLLECTIONS4_LIST_FIXEDSIZELIST,
+		ORG_APACHE_COMMONS_COLLECTIONS4_LIST_LAZYLIST, ORG_APACHE_COMMONS_COLLECTIONS4_LIST_SETUNIQUELIST,
+		ORG_APACHE_COMMONS_COLLECTIONS4_LIST_UNMODIFIABLELIST
+
+})
 public class ApacheCommonsCollectionsDecoratorListHeapResolverImpl extends AbstractCollectionHeapResolver
 		implements ICollectionHeapResolver {
 

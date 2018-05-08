@@ -9,6 +9,9 @@
  *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_LIST_CURSORABLELINKEDLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_LIST_NODECACHINGLINKEDLIST;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS4_LIST_TREELIST;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_LIST_CURSORABLELINKEDLIST;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_LIST_NODECACHINGLINKEDLIST;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_LIST_TREELIST;
@@ -26,7 +29,9 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
  * @author Quentin Lefèvre
  */
 @Subjects(value = { ORG_APACHE_COMMONS_COLLECTIONS_LIST_CURSORABLELINKEDLIST,
-		ORG_APACHE_COMMONS_COLLECTIONS_LIST_NODECACHINGLINKEDLIST, ORG_APACHE_COMMONS_COLLECTIONS_LIST_TREELIST })
+		ORG_APACHE_COMMONS_COLLECTIONS_LIST_NODECACHINGLINKEDLIST, ORG_APACHE_COMMONS_COLLECTIONS_LIST_TREELIST,
+		ORG_APACHE_COMMONS_COLLECTIONS4_LIST_CURSORABLELINKEDLIST,
+		ORG_APACHE_COMMONS_COLLECTIONS4_LIST_NODECACHINGLINKEDLIST, ORG_APACHE_COMMONS_COLLECTIONS4_LIST_TREELIST })
 public class ApacheCommonsCollectionsListHeapResolverImpl extends AbstractCollectionHeapResolver
 		implements ICollectionHeapResolver {
 
