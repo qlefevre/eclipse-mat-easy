@@ -12,8 +12,10 @@ package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_CONCURRENT_CONCURRENTHASHMAP;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTMAP;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_HASHMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_IDENTITYHASHMAP;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_LINKEDHASHMAP;
 import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_TREEMAP;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_WEAKHASHMAP;
 
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.snapshot.extension.Subjects;
@@ -28,8 +30,8 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
  *
  */
 @Subjects(value = { JAVA_UTIL_HASHMAP, JAVA_UTIL_TREEMAP, JAVA_UTIL_LINKEDHASHMAP,
-		JAVA_UTIL_CONCURRENT_CONCURRENTHASHMAP, JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTMAP,
-		"java.util.concurrent.ConcurrentHashMap", "org.apache.commons.collections.map.LinkedMap" })
+		JAVA_UTIL_CONCURRENT_CONCURRENTHASHMAP, JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTMAP, JAVA_UTIL_WEAKHASHMAP,
+		JAVA_UTIL_IDENTITYHASHMAP, "org.apache.commons.collections.map.LinkedMap" })
 public class MapHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
 
 	@Override

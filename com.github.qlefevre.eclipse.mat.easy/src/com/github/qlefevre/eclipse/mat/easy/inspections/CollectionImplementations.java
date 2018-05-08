@@ -23,6 +23,10 @@ public class CollectionImplementations {
 
 	public static final String JAVA_UTIL_LINKEDHASHMAP = "java.util.LinkedHashMap";
 
+	public static final String JAVA_UTIL_WEAKHASHMAP = "java.util.WeakHashMap";
+
+	public static final String JAVA_UTIL_IDENTITYHASHMAP = "java.util.IdentityHashMap";
+
 	public static final String JAVA_UTIL_CONCURRENT_CONCURRENTHASHMAP = "java.util.concurrent.ConcurrentHashMap";
 
 	public static final String JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTMAP = "java.util.concurrent.ConcurrentSkipListMap";
