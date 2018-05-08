@@ -10,14 +10,12 @@
 package com.github.qlefevre.eclipse.mat.test.heapdump;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.IdentityHashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.WeakHashMap;
@@ -33,7 +31,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
  * 
  * @author Quentin Lefèvre
  */
-public class OutOfMemoryErrorMain {
+public class OutOfMemoryErrorMain extends AbstractTestMain {
 
 	public static void main(String[] args) {
 
@@ -66,24 +64,6 @@ public class OutOfMemoryErrorMain {
 			}
 			i++;
 		}
-	}
-
-	private static IBag createBagsTree(Collection<String> collection) {
-		BagB bagB = new BagB(null);
-		bagB.setValues(collection);
-		IBag bag = new BagA(bagB);
-		bag = new BagC(bag);
-		bag = new BagA(bag);
-		return bag;
-	}
-
-	private static IBag createBagsTree(Map<String, String> map) {
-		BagB bagB = new BagB(null);
-		bagB.setMap(map);
-		IBag bag = new BagA(bagB);
-		bag = new BagC(bag);
-		bag = new BagA(bag);
-		return bag;
 	}
 
 }

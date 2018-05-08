@@ -20,7 +20,7 @@
    <extension point="org.eclipse.mat.report.query">
 		<!-- internal queries exposed to the UI -->
 		<query impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.CollectionQuery"/>
-		 </extension>
+	</extension>
    
    <extension point="org.eclipse.mat.ui.editorPanes">
 		<pane id="CollectionTreePane" class="com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes.CollectionPane">
@@ -40,8 +40,14 @@
         schema="schema/com.github.qlefevre.eclipse.mat.easy.extension.collectionheapresolver.exsd" />
         
  	<extension point="com.github.qlefevre.eclipse.mat.easy.extension.collectionHeapResolver">
-    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.ListHeapResolverImpl" />
-    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.SetHeapResolverImpl" />
-    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.MapHeapResolverImpl" />
+    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.JdkListHeapResolverImpl" />
+    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.JdkSetHeapResolverImpl" />
+    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.JdkMapHeapResolverImpl" />
+    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.ApacheCommonsCollectionsListHeapResolverImpl" />
+    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.ApacheCommonsCollectionsMapHeapResolverImpl" />
+    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.ApacheCommonsCollectionsDecoratorListHeapResolverImpl" />
+    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.ApacheCommonsCollectionsDecoratorSetHeapResolverImpl" />
+    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.ApacheCommonsCollectionsDecoratorMapHeapResolverImpl" />
  	</extension>
+ 	
 </plugin>

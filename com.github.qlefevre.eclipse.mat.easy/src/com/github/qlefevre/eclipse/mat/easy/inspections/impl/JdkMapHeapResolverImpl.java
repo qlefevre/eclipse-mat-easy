@@ -32,7 +32,7 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
 @Subjects(value = { JAVA_UTIL_HASHMAP, JAVA_UTIL_TREEMAP, JAVA_UTIL_LINKEDHASHMAP,
 		JAVA_UTIL_CONCURRENT_CONCURRENTHASHMAP, JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTMAP, JAVA_UTIL_WEAKHASHMAP,
 		JAVA_UTIL_IDENTITYHASHMAP, "org.apache.commons.collections.map.LinkedMap" })
-public class MapHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
+public class JdkMapHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
 
 	@Override
 	public byte getType(IObject object) throws SnapshotException {

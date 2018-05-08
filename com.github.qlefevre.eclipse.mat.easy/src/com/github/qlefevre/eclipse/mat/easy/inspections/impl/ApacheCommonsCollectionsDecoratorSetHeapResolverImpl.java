@@ -9,10 +9,9 @@
  *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTSET;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_HASHSET;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_LINKEDHASHSET;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_TREESET;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_SET_LISTORDEREDSET;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_SET_UNMODIFIABLESET;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.ORG_APACHE_COMMONS_COLLECTIONS_SET_UNMODIFIABLESORTEDSET;
 
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.snapshot.extension.Subjects;
@@ -22,24 +21,29 @@ import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
 import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapResolver;
 
 /**
+ * ApacheCommonsCollectionsListHeapResolverImpl
  * 
  * @author Quentin Lefèvre
- *
  */
-@Subjects(value = { JAVA_UTIL_HASHSET, JAVA_UTIL_TREESET, JAVA_UTIL_LINKEDHASHSET,
-		JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTSET })
-public class SetHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
+@Subjects(value = { ORG_APACHE_COMMONS_COLLECTIONS_SET_LISTORDEREDSET,
+		ORG_APACHE_COMMONS_COLLECTIONS_SET_UNMODIFIABLESET, ORG_APACHE_COMMONS_COLLECTIONS_SET_UNMODIFIABLESORTEDSET })
+public class ApacheCommonsCollectionsDecoratorSetHeapResolverImpl extends AbstractCollectionHeapResolver
+		implements ICollectionHeapResolver {
 
 	@Override
 	public int getCollectionSize(IObject object) throws SnapshotException {
 		Integer resolvedSize = null;
-		IObject map = (IObject) object.resolveValue("map");
-		// java.util.TreeSet
-		if (map == null) {
-			map = (IObject) object.resolveValue("m");
-		}
-		if (map != null) {
-			resolvedSize = (Integer) map.resolveValue("size");
+		// org.apache.commons.collections.set.AbstractSetDecorator
+		IObject set = (IObject) object.resolveValue("collection");
+		if (set != null) {
+			IObject map = (IObject) set.resolveValue("map");
+			// java.util.TreeSet
+			if (map == null) {
+				map = (IObject) set.resolveValue("m");
+			}
+			if (map != null) {
+				resolvedSize = (Integer) map.resolveValue("size");
+			}
 		}
 		return resolvedSize != null ? resolvedSize : -1;
 	}
@@ -53,5 +57,4 @@ public class SetHeapResolverImpl extends AbstractCollectionHeapResolver implemen
 	protected String getSourceCodeReferencePrefix(IObject object) throws SnapshotException {
 		return "Set<Object> ";
 	}
-
 }
