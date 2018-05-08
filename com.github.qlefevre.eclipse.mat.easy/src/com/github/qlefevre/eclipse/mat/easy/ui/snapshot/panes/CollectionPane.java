@@ -92,6 +92,7 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 		viewer.setInput(tree.getElements());
 		groupedBy = tree.getGroupedBy();
 		roots = tree.getRoots();
+		viewer.expandToLevel(10);
 
 		hookContextMenu(viewer.getControl());
 		hookContextAwareListeners();
@@ -359,6 +360,7 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 								viewer.setInput(tree.getElements());
 								groupedBy = tree.getGroupedBy();
 								roots = tree.getRoots();
+								viewer.expandToLevel(10);
 
 							}
 

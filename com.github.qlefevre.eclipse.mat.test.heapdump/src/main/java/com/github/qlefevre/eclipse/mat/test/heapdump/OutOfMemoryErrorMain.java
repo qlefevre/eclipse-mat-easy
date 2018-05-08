@@ -13,12 +13,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.IdentityHashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.ConcurrentSkipListSet;
@@ -49,6 +51,8 @@ public class OutOfMemoryErrorMain {
 		bagContainer.getBags().add(createBagsTree(new LinkedHashMap<String, String>()));
 		bagContainer.getBags().add(createBagsTree(new ConcurrentHashMap<String, String>()));
 		bagContainer.getBags().add(createBagsTree(new ConcurrentSkipListMap<String, String>()));
+		bagContainer.getBags().add(createBagsTree(new WeakHashMap<String, String>()));
+		bagContainer.getBags().add(createBagsTree(new IdentityHashMap<String, String>()));
 
 		int i = 0;
 		while (1 < 2) {
