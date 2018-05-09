@@ -17,3 +17,11 @@ However *"Collection"* instances like *java.util.List*, *java.util.Set* or *java
 ![alt text](/doc/collection_tree_view_example.png "HashSet<String> instance example")
 
 In example : You can see that field Collection<String> values in class *com.github.qlefevre.eclipse.mat.test.heapdump.BagB* retains *37.81%* of total heap. Instance *java.util.HashSet<String>* has *63404* elements and retains *8.24 MB*.
+  
+## Supported collection implementations
+
+| Package | Class | Type | Extract Size | Library | 
+|--------|-----------------|-----------------|---------------|---------------| 
+| ![alt text](/doc/package.gif "package") java.util | ![alt text](/doc/class.gif "class") ArrayList<br> ![alt text](/doc/class.gif "class") LinkedList<br> ![alt text](/doc/class.gif "class") Arrays$ArrayList | ![alt text](/doc/list.gif "list") List | ![alt text](/doc/ok.png "ok") *Yes* | JDK |
+| ![alt text](/doc/package.gif "package") java.util | ![alt text](/doc/class.gif "class") HashSet<br> ![alt text](/doc/class.gif "class") LinkedHashSet<br> ![alt text](/doc/class.gif "class") TreeSet | ![alt text](/doc/set.gif "set") Set | ![alt text](/doc/ok.png "ok") *Yes* | JDK |
+| ![alt text](/doc/package.gif "package") java.util.concurrent | ![alt text](/doc/class.gif "class") ConcurrentSkipListSet | ![alt text](/doc/set.gif "set") Set | ![alt text](/doc/ok.png "ok") *Yes* | JDK |
