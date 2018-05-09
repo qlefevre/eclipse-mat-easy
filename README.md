@@ -22,6 +22,11 @@ In example : You can see that field Collection<String> values in class *com.gith
 
 | Package | Class | Type | Extract Size | Library | 
 |--------|-----------------|-----------------|---------------|---------------| 
-| ![alt text](/doc/package.gif "package") java.util | ![alt text](/doc/class.gif "class") ArrayList<br> ![alt text](/doc/class.gif "class") LinkedList<br> ![alt text](/doc/class.gif "class") Arrays$ArrayList | ![alt text](/doc/list.gif "list") List | ![alt text](/doc/ok.png "ok") *Yes* | JDK |
-| ![alt text](/doc/package.gif "package") java.util | ![alt text](/doc/class.gif "class") HashSet<br> ![alt text](/doc/class.gif "class") LinkedHashSet<br> ![alt text](/doc/class.gif "class") TreeSet | ![alt text](/doc/set.gif "set") Set | ![alt text](/doc/ok.png "ok") *Yes* | JDK |
-| ![alt text](/doc/package.gif "package") java.util.concurrent | ![alt text](/doc/class.gif "class") ConcurrentSkipListSet | ![alt text](/doc/set.gif "set") Set | ![alt text](/doc/ok.png "ok") *Yes* | JDK |
+| ![alt text](/doc/package.gif "package") java.util | ![alt text](/doc/class.gif "class") ArrayList<br> ![alt text](/doc/class.gif "class") LinkedList<br> ![alt text](/doc/class.gif "class") Arrays$ArrayList | ![alt text](/doc/list.gif "list") List | ![alt text](/doc/ok.png "ok") **Yes** | JDK |
+| ![alt text](/doc/package.gif "package") java.util | ![alt text](/doc/class.gif "class") HashSet<br> ![alt text](/doc/class.gif "class") LinkedHashSet<br> ![alt text](/doc/class.gif "class") TreeSet | ![alt text](/doc/set.gif "set") Set | ![alt text](/doc/ok.png "ok") **Yes** | JDK |
+| ![alt text](/doc/package.gif "package") java.util.concurrent | ![alt text](/doc/class.gif "class") ConcurrentSkipListSet | ![alt text](/doc/set.gif "set") Set | ![alt text](/doc/no.png "no") No | JDK |
+| ![alt text](/doc/package.gif "package") java.util | ![alt text](/doc/class.gif "class")HashMap<br> ![alt text](/doc/class.gif "class")IdentityHashMap<br> ![alt text](/doc/class.gif "class")LinkedHashMap<br> ![alt text](/doc/class.gif "class")TreeMap<br> ![alt text](/doc/class.gif "class")WeakHashMap | ![alt text](/doc/map.gif "Map") Map | ![alt text](/doc/ok.png "ok") **Yes** | JDK |
+| ![alt text](/doc/package.gif "package") java.util.concurrent | ![alt text](/doc/class.gif "class")ConcurrentHashMap<br> ![alt text](/doc/class.gif "class")ConcurrentSkipListMap | ![alt text](/doc/map.gif "Map") Map | ![alt text](/doc/no.png "no") No
+| JDK |
+| ![alt text](/doc/package.gif "package") org.apache.commons.collections.list<br> ![alt text](/doc/package.gif "package") org.apache.commons.collections4.list | ![alt text](/doc/class.gif "class")HashMap<br> ![alt text](/doc/class.gif "class")IdentityHashMap<br> ![alt text](/doc/class.gif "class")LinkedHashMap<br> ![alt text](/doc/class.gif "class")TreeMap<br> ![alt text](/doc/class.gif "class")WeakHashMap | ![alt text](/doc/list.gif "List") List | ![alt text](/doc/ok.png "ok") **Yes** | JDK |
+
