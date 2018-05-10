@@ -9,6 +9,11 @@
  *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes;
 
+import static com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver.TYPE_LIST;
+import static com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver.TYPE_MAP;
+import static com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver.TYPE_SET;
+import static com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes.CollectionTreeContentProvider.MAX_NODE_RETAINEDHEAP_PERCENTAGE;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -24,6 +29,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -92,7 +98,7 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 		viewer.setInput(tree.getElements());
 		groupedBy = tree.getGroupedBy();
 		roots = tree.getRoots();
-		viewer.expandToLevel(10);
+		smartExpandAll(viewer, tree);
 
 		hookContextMenu(viewer.getControl());
 		hookContextAwareListeners();
@@ -360,7 +366,7 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 								viewer.setInput(tree.getElements());
 								groupedBy = tree.getGroupedBy();
 								roots = tree.getRoots();
-								viewer.expandToLevel(10);
+								smartExpandAll(viewer, tree);
 
 							}
 
@@ -375,6 +381,51 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 			};
 			job.setUser(true);
 			job.schedule();
+		}
+	}
+
+	private void smartExpandAll(TreeViewer viewer, Tree tree) {
+		ITreeContentProvider contentProvider = (ITreeContentProvider) viewer.getContentProvider();
+		Object[] rootChildren = contentProvider.getElements(tree.getElements());
+
+		// Find all children
+		for (Object rootChild : rootChildren) {
+			Object[] children = contentProvider.getChildren(rootChild);
+			for (Object object : children) {
+				// Find collection level ...
+				Object child = object;
+				Object expandChild = child;
+				int level = 0;
+				int notCollectionObjlevel = 0;
+				double percentage = 0;
+				do {
+					level++;
+					notCollectionObjlevel++;
+					byte type = ((byte) tree.getColumnValue(child, -1));
+					if (type == TYPE_LIST || type == TYPE_SET || type == TYPE_MAP) {
+						notCollectionObjlevel = 0;
+						expandChild = child;
+					}
+					Object[] subChildren = contentProvider.getChildren(child);
+					if (subChildren != null && subChildren.length > 0) {
+						child = subChildren[0];
+					} else {
+						child = null;
+					}
+					if (child != null) {
+						percentage = ((double) tree.getColumnValue(child, 3));
+
+					}
+				} while (child != null && percentage > MAX_NODE_RETAINEDHEAP_PERCENTAGE);
+				// level -= notCollectionObjlevel;
+
+				// Expand to level
+				// System.out.println(level + " - " + notCollectionObjlevel);
+				// viewer.expandToLevel(rootChild, level);
+				viewer.expandToLevel(expandChild, 1);
+
+			}
+
 		}
 	}
 

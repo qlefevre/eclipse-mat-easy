@@ -22,7 +22,7 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 
 	private static final int CHILDREN_LIMIT = 10;
 
-	private static final double MAX_NODE_RETAINEDHEAP_PERCENTAGE = 0.01;
+	static final double MAX_NODE_RETAINEDHEAP_PERCENTAGE = 0.01;
 
 	private CollectionPane pane;
 
@@ -48,8 +48,8 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		// No children ?
 		if (children.length == 0) {
 			List<Object> objects = nodes.stream().limit(CHILDREN_LIMIT).collect(Collectors.toList());
-			if(objects.size() == CHILDREN_LIMIT) {
-				objects.add("Total: "+nodes.size()+" entries");
+			if (objects.size() == CHILDREN_LIMIT) {
+				objects.add("Total: " + nodes.size() + " entries");
 			}
 			children = objects.toArray();
 		}
@@ -74,7 +74,7 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 
 	@Override
 	public boolean hasChildren(Object node) {
-		if(node instanceof String) {
+		if (node instanceof String) {
 			return false;
 		}
 		final Tree tree = pane.getTree();
