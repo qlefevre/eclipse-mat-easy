@@ -16,7 +16,9 @@ import static com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes.CollectionT
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -387,24 +389,20 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 	private void smartExpandAll(TreeViewer viewer, Tree tree) {
 		ITreeContentProvider contentProvider = (ITreeContentProvider) viewer.getContentProvider();
 		Object[] rootChildren = contentProvider.getElements(tree.getElements());
-		List<Object> objectsToExpand = new ArrayList<>();
+		Deque<Object> objectsToExpand = new LinkedList<>();
 
 		// Find all children
 		for (Object rootChild : rootChildren) {
+			System.out.println(tree.getColumnValue(rootChild, 0));
 			objectsToExpand.add(rootChild);
 			Object[] children = contentProvider.getChildren(rootChild);
 			for (Object object : children) {
 				// Find collection level ...
 				Object child = object;
-				int notCollectionObjlevel = 0;
 				double percentage = 0;
 				do {
 					objectsToExpand.add(child);
-					notCollectionObjlevel++;
-					byte type = ((byte) tree.getColumnValue(child, -1));
-					if (type == TYPE_LIST || type == TYPE_SET || type == TYPE_MAP) {
-						notCollectionObjlevel = 0;
-					}
+
 					Object[] subChildren = contentProvider.getChildren(child);
 					if (subChildren != null && subChildren.length > 0) {
 						child = subChildren[0];
@@ -416,14 +414,9 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 
 					}
 				} while (child != null && percentage > MAX_NODE_RETAINEDHEAP_PERCENTAGE);
-				// objectsToExpand.remove(objectsToExpand.size() - 1);
 
-				// Expand to level
-				System.out.println(tree.getColumnValue(object, 0));
-				System.out.println(notCollectionObjlevel);
-				for (int i = 0; i < notCollectionObjlevel; i++) {
-					// objectsToExpand.remove(objectsToExpand.size() - 1);
-				}
+				// Remove children
+				deleteChildren(object, objectsToExpand);
 
 			}
 
@@ -433,14 +426,35 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 		viewer.setExpandedElements(objectsToExpand.toArray());
 		viewer.getTree().setRedraw(true);
 
-		/*
-		 * Object[] elements = viewer.getExpandedElements(); for (Object obj : elements)
-		 * { System.out.println(tree.getColumnValue(obj, 0)); }
-		 */
 		System.out.println("separator");
 		for (Object obj : objectsToExpand) {
 			System.out.println(tree.getColumnValue(obj, 0));
 		}
+	}
+
+	private void deleteChildren(Object parent, Deque<Object> objectsToExpand) {
+		// Remove children which is not a Collection
+		Object last = objectsToExpand.getLast();
+		boolean collectionFound = false;
+		while (!parent.equals(last) && !collectionFound) {
+			System.out.println(tree.getColumnValue(last, 0));
+			byte type = ((byte) tree.getColumnValue(last, -1));
+			if (type == TYPE_LIST || type == TYPE_SET || type == TYPE_MAP) {
+				collectionFound = true;
+			} else {
+				objectsToExpand.removeLast();
+			}
+			last = objectsToExpand.getLast();
+		}
+
+		// Remove preceding collection
+		last = objectsToExpand.removeLast();
+		byte type = ((byte) tree.getColumnValue(objectsToExpand.getLast(), -1));
+		while (type == TYPE_LIST || type == TYPE_SET || type == TYPE_MAP) {
+			last = objectsToExpand.removeLast();
+			type = ((byte) tree.getColumnValue(objectsToExpand.getLast(), -1));
+		}
+
 	}
 
 }
