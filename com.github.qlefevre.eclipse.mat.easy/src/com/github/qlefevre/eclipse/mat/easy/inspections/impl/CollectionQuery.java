@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Quentin Lefèvre and others
+ * Copyright (c) 2018 Quentin Lefï¿½vre and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -138,6 +138,20 @@ public class CollectionQuery implements IQuery {
 			this.size = NOT_INITIALIZED;
 			this.retainedHeap = NOT_INITIALIZED;
 			this.type = (byte) NOT_INITIALIZED;
+		}
+
+		@Override
+		public int hashCode() {
+			return objectId;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (obj instanceof Node) {
+				Node other = (Node) obj;
+				return objectId == other.objectId;
+			}
+			return false;
 		}
 	}
 
