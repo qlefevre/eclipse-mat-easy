@@ -15,9 +15,11 @@ import static com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapReso
 import static com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes.CollectionTreeContentProvider.MAX_NODE_RETAINEDHEAP_PERCENTAGE;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -389,55 +391,59 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 	private void smartExpandAll(TreeViewer viewer, Tree tree) {
 		ITreeContentProvider contentProvider = (ITreeContentProvider) viewer.getContentProvider();
 		Object[] rootChildren = contentProvider.getElements(tree.getElements());
-		Deque<Object> objectsToExpand = new LinkedList<>();
 
-		// Find all children
+		// Find all children paths
+		List<Object[]> paths = new ArrayList<>();
 		for (Object rootChild : rootChildren) {
-			System.out.println(tree.getColumnValue(rootChild, 0));
-			objectsToExpand.add(rootChild);
-			Object[] children = contentProvider.getChildren(rootChild);
-			for (Object object : children) {
-				// Find collection level ...
-				Object child = object;
-				double percentage = 0;
-				do {
-					objectsToExpand.add(child);
-
-					Object[] subChildren = contentProvider.getChildren(child);
-					if (subChildren != null && subChildren.length > 0) {
-						child = subChildren[0];
-					} else {
-						child = null;
-					}
-					if (child != null) {
-						percentage = ((double) tree.getColumnValue(child, 3));
-
-					}
-				} while (child != null && percentage > MAX_NODE_RETAINEDHEAP_PERCENTAGE);
-
-				// Remove children
-				deleteChildren(object, objectsToExpand);
-
-			}
-
+			paths.addAll(getPaths(contentProvider, new Object[] { rootChild }, rootChild));
 		}
+
+		// Remove useless children
+		List<Object[]> cleanedPaths = new ArrayList<>();
+		for (Object[] path : paths) {
+			cleanedPaths.add(deleteChildren(path[0], new LinkedList<Object>(Arrays.asList(path))));
+		}
+
 		// Expands nodes
+		LinkedHashSet<Object> objectsToExpand = new LinkedHashSet<Object>();
+		for (Object[] path : cleanedPaths) {
+			for (Object object : path) {
+				objectsToExpand.add(object);
+			}
+		}
+
 		viewer.getTree().setRedraw(false);
 		viewer.setExpandedElements(objectsToExpand.toArray());
 		viewer.getTree().setRedraw(true);
-
-		System.out.println("separator");
-		for (Object obj : objectsToExpand) {
-			System.out.println(tree.getColumnValue(obj, 0));
-		}
 	}
 
-	private void deleteChildren(Object parent, Deque<Object> objectsToExpand) {
+	private List<Object[]> getPaths(ITreeContentProvider contentProvider, Object[] path, Object node) {
+		List<Object[]> paths = new ArrayList<Object[]>();
+		Object[] children = contentProvider.getChildren(node);
+		for (Object object : children) {
+			if (object instanceof String)
+				continue;
+			double percentage = ((double) tree.getColumnValue(object, 3));
+			if (percentage > MAX_NODE_RETAINEDHEAP_PERCENTAGE) {
+				Object[] newPath = Arrays.copyOf(path, path.length + 1);
+				newPath[path.length] = object;
+				paths.addAll(getPaths(contentProvider, newPath, object));
+			}
+		}
+		if (paths.isEmpty()) {
+			double percentage = ((double) tree.getColumnValue(node, 3));
+			if (percentage > MAX_NODE_RETAINEDHEAP_PERCENTAGE) {
+				paths.add(path);
+			}
+		}
+		return paths;
+	}
+
+	private Object[] deleteChildren(Object parent, Deque<Object> objectsToExpand) {
 		// Remove children which is not a Collection
 		Object last = objectsToExpand.getLast();
 		boolean collectionFound = false;
 		while (!parent.equals(last) && !collectionFound) {
-			System.out.println(tree.getColumnValue(last, 0));
 			byte type = ((byte) tree.getColumnValue(last, -1));
 			if (type == TYPE_LIST || type == TYPE_SET || type == TYPE_MAP) {
 				collectionFound = true;
@@ -449,12 +455,15 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 
 		// Remove preceding collection
 		last = objectsToExpand.removeLast();
-		byte type = ((byte) tree.getColumnValue(objectsToExpand.getLast(), -1));
-		while (type == TYPE_LIST || type == TYPE_SET || type == TYPE_MAP) {
-			last = objectsToExpand.removeLast();
-			type = ((byte) tree.getColumnValue(objectsToExpand.getLast(), -1));
+		if (!objectsToExpand.isEmpty()) {
+			byte type = ((byte) tree.getColumnValue(objectsToExpand.getLast(), -1));
+			while (type == TYPE_LIST || type == TYPE_SET || type == TYPE_MAP) {
+				last = objectsToExpand.removeLast();
+				type = ((byte) tree.getColumnValue(objectsToExpand.getLast(), -1));
+			}
 		}
 
+		return objectsToExpand.toArray();
 	}
 
 }
