@@ -22,7 +22,7 @@ In example : You can see that field Collection<String> values in class *com.gith
 
 ### Downloads
 
-You can download a prepackaged version with eclipse-mat-easy plugin already installed : [Windows(x86_64)](https://github.com/qlefevre/eclipse-mat-easy/releases/download/v1.0/MemoryAnalyzer-with-eclipse-mat-easy-1.7.0.20170613-win32.win32.x86_64.zip) Linux(x86_64)
+You can download a prepackaged version with eclipse-mat-easy plugin already installed : [Windows(x86_64)](https://github.com/qlefevre/eclipse-mat-easy/releases/download/v1.0/MemoryAnalyzer-with-eclipse-mat-easy-1.7.0.20170613-win32.win32.x86_64.zip) [Linux(x86_64)](https://github.com/qlefevre/eclipse-mat-easy/releases/download/v1.0/MemoryAnalyzer-with-eclipse-mat-easy-1.7.0.20170613-win32.win32.x86_64.zip)
 
 ### Update site
 
