@@ -94,4 +94,8 @@ public class CollectionImplementations {
 	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_TRANSFORMEDMAP = "org.apache.commons.collections4.map.TransformedMap";
 	public static final String ORG_APACHE_COMMONS_COLLECTIONS4_MAP_PREDICATEDMAP = "org.apache.commons.collections4.map.PredicatedMap";
 
+	public static final String GNU_TROVE_SET_HASH_THASHSET = "gnu.trove.set.hash.THashSet";
+	public static final String GNU_TROVE_SET_HASH_TLINKEDHASHSET = "gnu.trove.set.hash.TLinkedHashSet";
+	public static final String GNU_TROVE_MAP_HASH_THASHMAP = "gnu.trove.map.hash.THashMap";
+
 }
