@@ -29,10 +29,11 @@ public class Trove4JMain extends AbstractTestMain {
 		bagContainer.getBags().add(createBagsTree(new THashSet<>()));
 		bagContainer.getBags().add(createBagsTree(new TLinkedHashSet<>()));
 		bagContainer.getBags().add(createBagsTree(new THashMap<>()));
-
+		THashSet<String> set = new THashSet<>();
 		int i = 0;
 		while (1 < 2) {
 			for (IBag bag : bagContainer.getBags()) {
+				set.add("OutOfMemoryError soon " + i);
 				if (((BagB) bag.getBag().getBag().getBag()).getValues() != null) {
 					((BagB) bag.getBag().getBag().getBag()).getValues().add("OutOfMemoryError soon " + i);
 				} else {
