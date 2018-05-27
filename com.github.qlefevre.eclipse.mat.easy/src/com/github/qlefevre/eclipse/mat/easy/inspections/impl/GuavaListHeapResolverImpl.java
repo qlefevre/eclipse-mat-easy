@@ -20,15 +20,9 @@ import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
 import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapResolver;
 
 /**
-<<<<<<< HEAD
  * GuavaListHeapResolverImpl
  * 
  * @author Quentin Lefèvre
-=======
- * 
- * @author Quentin Lefèvre
- *
->>>>>>> branch 'master' of https://github.com/qlefevre/eclipse-mat-easy.git
  */
 @Subjects(value = { COM_GOOGLE_COMMON_COLLECT_REGULARIMMUTABLELIST })
 public class GuavaListHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
