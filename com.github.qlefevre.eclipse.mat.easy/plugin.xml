@@ -50,6 +50,9 @@
     	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.ApacheCommonsCollectionsDecoratorMapHeapResolverImpl" />
     	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.Trove4JSetHeapResolverImpl" />
     	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.Trove4JMapHeapResolverImpl" />
+    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.GuavaListHeapResolverImpl" />
+    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.GuavaSetHeapResolverImpl" />
+    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.GuavaMapHeapResolverImpl" />
  	</extension>
  	
 </plugin>

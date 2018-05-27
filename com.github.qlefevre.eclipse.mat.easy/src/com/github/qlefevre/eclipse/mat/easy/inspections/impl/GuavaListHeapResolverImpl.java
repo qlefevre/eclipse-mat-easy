@@ -9,49 +9,38 @@
  *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy.inspections.impl;
 
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTSET;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_HASHSET;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_LINKEDHASHSET;
-import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.JAVA_UTIL_TREESET;
+import static com.github.qlefevre.eclipse.mat.easy.inspections.CollectionImplementations.COM_GOOGLE_COMMON_COLLECT_REGULARIMMUTABLELIST;
 
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.snapshot.extension.Subjects;
 import org.eclipse.mat.snapshot.model.IObject;
+import org.eclipse.mat.snapshot.model.IObjectArray;
 
 import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
 import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapResolver;
 
 /**
- * JdkSetHeapResolverImpl
+ * GuavaListHeapResolverImpl
  * 
  * @author Quentin Lefèvre
  */
-@Subjects(value = { JAVA_UTIL_HASHSET, JAVA_UTIL_TREESET, JAVA_UTIL_LINKEDHASHSET,
-		JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTSET })
-public class JdkSetHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
+@Subjects(value = { COM_GOOGLE_COMMON_COLLECT_REGULARIMMUTABLELIST })
+public class GuavaListHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
 
 	@Override
 	public int getCollectionSize(IObject object) throws SnapshotException {
-		Integer resolvedSize = null;
-		IObject map = (IObject) object.resolveValue("map");
-		// java.util.TreeSet
-		if (map == null) {
-			map = (IObject) object.resolveValue("m");
-		}
-		if (map != null) {
-			resolvedSize = (Integer) map.resolveValue("size");
-		}
-		return resolvedSize != null ? resolvedSize : -1;
+		IObjectArray array = (IObjectArray) object.resolveValue("array");
+		return array != null ? array.getLength() : -1;
 	}
 
 	@Override
 	public byte getType(IObject object) throws SnapshotException {
-		return TYPE_SET;
+		return TYPE_LIST;
 	}
 
 	@Override
 	protected String getSourceCodeReferencePrefix(IObject object) throws SnapshotException {
-		return "Set<Object> ";
+		return "List<Object> ";
 	}
 
 }

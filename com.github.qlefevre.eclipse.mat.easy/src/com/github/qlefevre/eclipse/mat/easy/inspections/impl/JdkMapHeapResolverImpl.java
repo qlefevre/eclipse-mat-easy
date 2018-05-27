@@ -25,9 +25,9 @@ import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
 import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapResolver;
 
 /**
+ * JdkMapHeapResolverImpl
  * 
  * @author Quentin Lefèvre
- *
  */
 @Subjects(value = { JAVA_UTIL_HASHMAP, JAVA_UTIL_TREEMAP, JAVA_UTIL_LINKEDHASHMAP,
 		JAVA_UTIL_CONCURRENT_CONCURRENTHASHMAP, JAVA_UTIL_CONCURRENT_CONCURRENTSKIPLISTMAP, JAVA_UTIL_WEAKHASHMAP,

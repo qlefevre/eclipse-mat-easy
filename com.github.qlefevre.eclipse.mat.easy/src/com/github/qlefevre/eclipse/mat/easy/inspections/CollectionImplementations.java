@@ -99,8 +99,13 @@ public class CollectionImplementations {
 	public static final String GNU_TROVE_MAP_HASH_THASHMAP = "gnu.trove.map.hash.THashMap";
 
 	public static final String COM_GOOGLE_COMMON_COLLECT_HASHBIMAP = "com.google.common.collect.HashBiMap";
-	public static final String COM_GOOGLE_COMMON_COLLECT_IMMUTABLEMAP = "com.google.common.collect.ImmutableMap";
-	public static final String COM_GOOGLE_COMMON_COLLECT_IMMUTABLESORTEDMAP = "com.google.common.collect.ImmutableSortedMap"; // todo
+	public static final String COM_GOOGLE_COMMON_COLLECT_REGULARIMMUTABLEMAP = "com.google.common.collect.RegularImmutableMap";
+	public static final String COM_GOOGLE_COMMON_COLLECT_IMMUTABLESORTEDMAP = "com.google.common.collect.ImmutableSortedMap";
+
 	public static final String COM_GOOGLE_COMMON_COLLECT_ENUMHASHBIMAP = "com.google.common.collect.EnumHashBiMap";
 	public static final String COM_GOOGLE_COMMON_COLLECT_ENUMBIMAP = "com.google.common.collect.EnumBiMap";
+
+	public static final String COM_GOOGLE_COMMON_COLLECT_REGULARIMMUTABLELIST = "com.google.common.collect.RegularImmutableList";
+	public static final String COM_GOOGLE_COMMON_COLLECT_REGULARIMMUTABLESET = "com.google.common.collect.RegularImmutableSet";
+
 }

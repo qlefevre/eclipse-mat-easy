@@ -22,9 +22,9 @@ import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
 import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapResolver;
 
 /**
+ * JdkListHeapResolverImpl
  * 
  * @author Quentin Lefèvre
- *
  */
 @Subjects(value = { JAVA_UTIL_ARRAYLIST, JAVA_UTIL_LINKEDLIST, JAVA_UTIL_ARRAYS_ARRAYLIST })
 public class JdkListHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
