@@ -57,8 +57,11 @@ The following update site can be used to get development builds: http://github.c
 
 | Package | Class | Type | Extract Size | Library | 
 |----------------------|----------------------|----------|------|---------------|
-| ![alt text](/doc/package.gif "package") gnu.trove.map.hash | ![alt text](/doc/class.gif "class") THashSet<br> ![alt text](/doc/class.gif "class") TLinkedHashSet | ![alt text](/doc/list.gif "set") Set | ![alt text](/doc/ok.png "ok") **Yes** | JDK |
-| ![alt text](/doc/package.gif "package") gnu.trove.map.hash | ![alt text](/doc/class.gif "class") THashMap | ![alt text](/doc/map.gif "Map") Map | ![alt text](/doc/ok.png "ok") **Yes** | JDK |
+| ![alt text](/doc/package.gif "package") com.google.common.collect | ![alt text](/doc/class.gif "class") ImmutableList | ![alt text](/doc/list.gif "List") List | ![alt text](/doc/ok.png "ok") **Yes** | Guava |
+| ![alt text](/doc/package.gif "package") com.google.common.collect | ![alt text](/doc/class.gif "class") ImmutableSet | ![alt text](/doc/set.gif "Set") Set | ![alt text](/doc/ok.png "ok") **Yes** | Guava |
+| ![alt text](/doc/package.gif "package") com.google.common.collect | ![alt text](/doc/class.gif "class") HashBiMap<br> ![alt text](/doc/class.gif "class") ImmutableMap<br> ![alt text](/doc/class.gif "class") ImmutableSortedMap | ![alt text](/doc/map.gif "Map") Map | ![alt text](/doc/ok.png "ok") **Yes** | Guava |
+| ![alt text](/doc/package.gif "package") gnu.trove.map.hash | ![alt text](/doc/class.gif "class") THashSet<br> ![alt text](/doc/class.gif "class") TLinkedHashSet | ![alt text](/doc/set.gif "set") Set | ![alt text](/doc/ok.png "ok") **Yes** | Trove4J |
+| ![alt text](/doc/package.gif "package") gnu.trove.map.hash | ![alt text](/doc/class.gif "class") THashMap | ![alt text](/doc/map.gif "Map") Map | ![alt text](/doc/ok.png "ok") **Yes** | Trove4J |
 | ![alt text](/doc/package.gif "package") java.util | ![alt text](/doc/class.gif "class") ArrayList<br> ![alt text](/doc/class.gif "class") LinkedList<br> ![alt text](/doc/class.gif "class") Arrays$ArrayList | ![alt text](/doc/list.gif "list") List | ![alt text](/doc/ok.png "ok") **Yes** | JDK |
 | ![alt text](/doc/package.gif "package") java.util | ![alt text](/doc/class.gif "class") HashSet<br> ![alt text](/doc/class.gif "class") LinkedHashSet<br> ![alt text](/doc/class.gif "class") TreeSet | ![alt text](/doc/set.gif "set") Set | ![alt text](/doc/ok.png "ok") **Yes** | JDK |
 | ![alt text](/doc/package.gif "package") java.util.concurrent | ![alt text](/doc/class.gif "class") ConcurrentSkipListSet | ![alt text](/doc/set.gif "set") Set | No | JDK |
