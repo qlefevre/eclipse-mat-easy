@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Quentin Lefèvre and others
+ * Copyright (c) 2018 Quentin Lefï¿½vre and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -9,13 +9,16 @@
  *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy.inspections;
 
+import java.util.Arrays;
+
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.snapshot.ISnapshot;
 import org.eclipse.mat.snapshot.model.IObject;
+import org.eclipse.mat.snapshot.model.IObjectArray;
 import org.eclipse.mat.snapshot.model.NamedReference;
 
 /**
- * @author Quentin Lefèvre
+ * @author Quentin Lefï¿½vre
  *
  */
 public final class SnapshotUtil {
@@ -46,5 +49,21 @@ public final class SnapshotUtil {
 			referenceName = UNKNOWN_REF;
 		}
 		return referenceName;
+	}
+
+	public static String extractGenericType(Object[] objects) {
+		String genericType = "Object";
+		if (objects != null) {
+			if (objects.length == 1 && objects[0] instanceof IObjectArray) {
+
+			} else if (objects.length > 0 && objects[0] != null) {
+				String type = ((IObject) objects[0]).getClazz().getName();
+				if (Arrays.stream(objects).filter(obj -> obj != null).map(obj -> (IObject) obj)
+						.allMatch(obj -> type.equals(obj.getClazz().getName()))) {
+					genericType = type;
+				}
+			}
+		}
+		return genericType;
 	}
 }

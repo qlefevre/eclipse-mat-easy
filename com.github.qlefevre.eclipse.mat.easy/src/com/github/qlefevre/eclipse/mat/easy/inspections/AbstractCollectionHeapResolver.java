@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Quentin Lefèvre and others
+ * Copyright (c) 2018 Quentin Lefï¿½vre and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -34,6 +34,22 @@ public abstract class AbstractCollectionHeapResolver implements ICollectionHeapR
 		return getSourceCodeReferencePrefix(object) + referenceName;
 	}
 
-	protected abstract String getSourceCodeReferencePrefix(IObject object) throws SnapshotException;
+	protected String getSourceCodeReferencePrefix(IObject object) throws SnapshotException {
+		String sourceCodeReferencePrefix;
+		switch (getType(object)) {
+		case TYPE_LIST:
+			sourceCodeReferencePrefix = "List<Object> ";
+			break;
+		case TYPE_SET:
+			sourceCodeReferencePrefix = "Set<Object> ";
+			break;
+		case TYPE_MAP:
+			sourceCodeReferencePrefix = "Map<Object,Object> ";
+			break;
+		default:
+			sourceCodeReferencePrefix = "";
+		}
+		return sourceCodeReferencePrefix;
+	}
 
 }

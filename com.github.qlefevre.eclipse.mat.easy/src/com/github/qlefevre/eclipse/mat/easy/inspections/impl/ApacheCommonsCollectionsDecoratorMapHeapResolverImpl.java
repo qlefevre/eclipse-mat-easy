@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Quentin Lefèvre and others
+ * Copyright (c) 2018 Quentin Lefï¿½vre and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -42,7 +42,7 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
 /**
  * ApacheCommonsCollectionsMapHeapResolverImpl
  * 
- * @author Quentin Lefèvre
+ * @author Quentin Lefï¿½vre
  */
 @Subjects(value = { ORG_APACHE_COMMONS_COLLECTIONS_MAP_DEFAULTEDMAP, ORG_APACHE_COMMONS_COLLECTIONS_MAP_FIXEDSIZEMAP,
 		ORG_APACHE_COMMONS_COLLECTIONS_MAP_LAZYMAP, ORG_APACHE_COMMONS_COLLECTIONS_MAP_LISTORDEREDMAP,
@@ -75,11 +75,6 @@ public class ApacheCommonsCollectionsDecoratorMapHeapResolverImpl extends Abstra
 	@Override
 	public byte getType(IObject object) throws SnapshotException {
 		return TYPE_MAP;
-	}
-
-	@Override
-	protected String getSourceCodeReferencePrefix(IObject object) throws SnapshotException {
-		return "Map<Object,Object> ";
 	}
 
 }

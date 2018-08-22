@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Quentin Lefèvre and others
+ * Copyright (c) 2018 Quentin Lefï¿½vre and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -14,6 +14,14 @@ public class CollectionImplementations {
 	public static final String JAVA_UTIL_ARRAYLIST = "java.util.ArrayList";
 	public static final String JAVA_UTIL_LINKEDLIST = "java.util.LinkedList";
 	public static final String JAVA_UTIL_ARRAYS_ARRAYLIST = "java.util.Arrays$ArrayList";
+	public static final String JAVA_UTIL_IMMUTABLECOLLECTIONS_LIST1 = "java.util.ImmutableCollections$List1";
+	public static final String JAVA_UTIL_IMMUTABLECOLLECTIONS_LIST2 = "java.util.ImmutableCollections$List2";
+	public static final String JAVA_UTIL_IMMUTABLECOLLECTIONS_LISTN = "java.util.ImmutableCollections$ListN";
+	public static final String JAVA_UTIL_IMMUTABLECOLLECTIONS_MAP1 = "java.util.ImmutableCollections$Map1";
+	public static final String JAVA_UTIL_IMMUTABLECOLLECTIONS_MAPN = "java.util.ImmutableCollections$MapN";
+	public static final String JAVA_UTIL_IMMUTABLECOLLECTIONS_SET1 = "java.util.ImmutableCollections$Set1";
+	public static final String JAVA_UTIL_IMMUTABLECOLLECTIONS_SET2 = "java.util.ImmutableCollections$Set2";
+	public static final String JAVA_UTIL_IMMUTABLECOLLECTIONS_SETN = "java.util.ImmutableCollections$SetN";
 
 	public static final String JAVA_UTIL_HASHMAP = "java.util.HashMap";
 	public static final String JAVA_UTIL_TREEMAP = "java.util.TreeMap";

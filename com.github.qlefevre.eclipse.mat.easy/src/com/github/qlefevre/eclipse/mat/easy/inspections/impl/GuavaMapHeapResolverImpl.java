@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Quentin Lefèvre and others
+ * Copyright (c) 2018 Quentin Lefï¿½vre and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -26,7 +26,7 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
 /**
  * GuavaMapHeapResolverImpl
  * 
- * @author Quentin Lefèvre
+ * @author Quentin Lefï¿½vre
  */
 @Subjects(value = { COM_GOOGLE_COMMON_COLLECT_HASHBIMAP, COM_GOOGLE_COMMON_COLLECT_REGULARIMMUTABLEMAP,
 		COM_GOOGLE_COMMON_COLLECT_IMMUTABLESORTEDMAP, COM_GOOGLE_COMMON_COLLECT_ENUMHASHBIMAP,
@@ -62,11 +62,6 @@ public class GuavaMapHeapResolverImpl extends AbstractCollectionHeapResolver imp
 	@Override
 	public byte getType(IObject object) throws SnapshotException {
 		return TYPE_MAP;
-	}
-
-	@Override
-	protected String getSourceCodeReferencePrefix(IObject object) throws SnapshotException {
-		return "Map<Object,Object> ";
 	}
 
 }
