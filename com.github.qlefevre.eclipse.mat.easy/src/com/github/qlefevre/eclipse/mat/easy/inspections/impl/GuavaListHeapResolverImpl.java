@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Quentin Lefèvre and others
+ * Copyright (c) 2018 Quentin Lefï¿½vre and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -22,7 +22,7 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
 /**
  * GuavaListHeapResolverImpl
  * 
- * @author Quentin Lefèvre
+ * @author Quentin Lefï¿½vre
  */
 @Subjects(value = { COM_GOOGLE_COMMON_COLLECT_REGULARIMMUTABLELIST })
 public class GuavaListHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
@@ -36,11 +36,6 @@ public class GuavaListHeapResolverImpl extends AbstractCollectionHeapResolver im
 	@Override
 	public byte getType(IObject object) throws SnapshotException {
 		return TYPE_LIST;
-	}
-
-	@Override
-	protected String getSourceCodeReferencePrefix(IObject object) throws SnapshotException {
-		return "List<Object> ";
 	}
 
 }
