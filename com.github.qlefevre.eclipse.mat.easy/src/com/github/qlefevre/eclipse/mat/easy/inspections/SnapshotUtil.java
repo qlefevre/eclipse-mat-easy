@@ -1,5 +1,9 @@
 /*******************************************************************************
+<<<<<<< HEAD
  * Copyright (c) 2018 Quentin Lef���vre and others
+=======
+ * Copyright (c) 2018 Quentin Lef�vre and others
+>>>>>>> branch 'master' of https://github.com/qlefevre/eclipse-mat-easy.git
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -18,7 +22,11 @@ import org.eclipse.mat.snapshot.model.IObjectArray;
 import org.eclipse.mat.snapshot.model.NamedReference;
 
 /**
- * @author Quentin Lef���vre
+ * <<<<<<< HEAD
+ * 
+ * @author Quentin Lef���vre =======
+ * @author Quentin Lef�vre >>>>>>> branch 'master' of
+ *         https://github.com/qlefevre/eclipse-mat-easy.git
  *
  */
 public final class SnapshotUtil {
