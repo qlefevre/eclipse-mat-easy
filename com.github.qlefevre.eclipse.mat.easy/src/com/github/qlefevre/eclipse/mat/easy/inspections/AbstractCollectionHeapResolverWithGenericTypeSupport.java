@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Quentin Lefï¿½vre and others
+ * Copyright (c) 2018 Quentin Lefèvre and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -15,7 +15,7 @@ import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.snapshot.model.IObject;
 
 /**
- * @author Quentin LefÃ¨vre
+ * @author Quentin Lefèvre
  *
  */
 public abstract class AbstractCollectionHeapResolverWithGenericTypeSupport extends AbstractCollectionHeapResolver {

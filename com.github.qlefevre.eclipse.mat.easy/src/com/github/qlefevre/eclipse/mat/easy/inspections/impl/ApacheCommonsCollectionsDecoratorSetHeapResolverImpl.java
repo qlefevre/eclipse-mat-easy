@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Quentin Lefï¿½vre and others
+ * Copyright (c) 2018 Quentin Lefèvre and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -26,7 +26,7 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
 /**
  * ApacheCommonsCollectionsListHeapResolverImpl
  * 
- * @author Quentin Lefï¿½vre
+ * @author Quentin Lefèvre
  */
 @Subjects(value = { ORG_APACHE_COMMONS_COLLECTIONS_SET_LISTORDEREDSET,
 		ORG_APACHE_COMMONS_COLLECTIONS_SET_UNMODIFIABLESET, ORG_APACHE_COMMONS_COLLECTIONS_SET_UNMODIFIABLESORTEDSET,

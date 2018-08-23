@@ -1,9 +1,5 @@
 /*******************************************************************************
-<<<<<<< HEAD
- * Copyright (c) 2018 Quentin Lef���vre and others
-=======
- * Copyright (c) 2018 Quentin Lef�vre and others
->>>>>>> branch 'master' of https://github.com/qlefevre/eclipse-mat-easy.git
+ * Copyright (c) 2018 Quentin Lefèvre and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -22,12 +18,7 @@ import org.eclipse.mat.snapshot.model.IObjectArray;
 import org.eclipse.mat.snapshot.model.NamedReference;
 
 /**
- * <<<<<<< HEAD
- * 
- * @author Quentin Lef���vre =======
- * @author Quentin Lef�vre >>>>>>> branch 'master' of
- *         https://github.com/qlefevre/eclipse-mat-easy.git
- *
+ * @author Quentin Lefèvre
  */
 public final class SnapshotUtil {
 
@@ -82,7 +73,7 @@ public final class SnapshotUtil {
 				}
 			} else if (objects.length > 0 && objects[0] != null) {
 				String type = ((IObject) objects[0]).getClazz().getName();
-				if (Arrays.stream(objects).filter(obj -> obj != null).map(obj -> (IObject) obj)
+				if (Arrays.stream(objects).parallel().filter(obj -> obj != null).map(obj -> (IObject) obj)
 						.allMatch(obj -> type.equals(obj.getClazz().getName()))) {
 					genericType = type.substring(type.lastIndexOf('.') + 1);
 				}

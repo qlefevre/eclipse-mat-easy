@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Quentin Lefï¿½vre and others
+ * Copyright (c) 2018 Quentin Lefèvre and others
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -26,7 +26,7 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
 /**
  * GuavaMapHeapResolverImpl
  * 
- * @author Quentin Lefï¿½vre
+ * @author Quentin Lefèvre
  */
 @Subjects(value = { COM_GOOGLE_COMMON_COLLECT_HASHBIMAP, COM_GOOGLE_COMMON_COLLECT_REGULARIMMUTABLEMAP,
 		COM_GOOGLE_COMMON_COLLECT_IMMUTABLESORTEDMAP, COM_GOOGLE_COMMON_COLLECT_ENUMHASHBIMAP,
