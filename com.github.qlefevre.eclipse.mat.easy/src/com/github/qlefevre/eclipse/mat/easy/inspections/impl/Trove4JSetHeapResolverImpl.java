@@ -17,7 +17,7 @@ import org.eclipse.mat.snapshot.extension.Subjects;
 import org.eclipse.mat.snapshot.model.IObject;
 
 import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
-import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapResolver;
+import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapResolverWithGenericTypeSupport;
 
 /**
  * Trove4JSetHeapResolverImpl
@@ -25,7 +25,8 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
  * @author Quentin Lefèvre
  */
 @Subjects(value = { GNU_TROVE_SET_HASH_THASHSET, GNU_TROVE_SET_HASH_TLINKEDHASHSET })
-public class Trove4JSetHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
+public class Trove4JSetHeapResolverImpl extends AbstractCollectionHeapResolverWithGenericTypeSupport
+		implements ICollectionHeapResolver {
 
 	@Override
 	public int getCollectionSize(IObject object) throws SnapshotException {
@@ -36,6 +37,11 @@ public class Trove4JSetHeapResolverImpl extends AbstractCollectionHeapResolver i
 	@Override
 	public byte getType(IObject object) throws SnapshotException {
 		return TYPE_SET;
+	}
+
+	@Override
+	protected Object[] getStorageObjects(IObject object) throws SnapshotException {
+		return new Object[] { object.resolveValue("_set") };
 	}
 
 }

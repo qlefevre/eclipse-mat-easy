@@ -43,7 +43,9 @@
     	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.JdkListHeapResolverImpl" />
     	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.JdkListHeapResolverWithGenericTypeSupportImpl" />
     	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.JdkSetHeapResolverImpl" />
+    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.JdkSetHeapResolverWithGenericTypeSupportImpl" />
     	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.JdkMapHeapResolverImpl" />
+    	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.JdkMapHeapResolverWithGenericTypeSupportImpl" />
     	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.ApacheCommonsCollectionsListHeapResolverImpl" />
     	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.ApacheCommonsCollectionsMapHeapResolverImpl" />
     	<class impl="com.github.qlefevre.eclipse.mat.easy.inspections.impl.ApacheCommonsCollectionsDecoratorListHeapResolverImpl" />
