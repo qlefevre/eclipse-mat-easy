@@ -132,6 +132,7 @@ public class CollectionQuery implements IQuery {
 		int size;
 		long retainedHeap;
 		byte type;
+		IObject object;
 
 		public Node(int objectId) {
 			this.objectId = objectId;
@@ -196,6 +197,14 @@ public class CollectionQuery implements IQuery {
 
 		public ResultMetaData getResultMetaData() {
 			return null;
+		}
+
+		public IObject getObject(Node node) throws SnapshotException {
+			IObject object = node.object;
+			if (object == null) {
+				object = snapshot.getObject(node.objectId);
+			}
+			return object;
 		}
 	}
 
@@ -284,31 +293,31 @@ public class CollectionQuery implements IQuery {
 				switch (columnIndex) {
 				case -1:
 					if (node.type == NOT_INITIALIZED) {
-						IObject obj = snapshot.getObject(node.objectId);
+						IObject obj = getObject(node);
 						node.type = collectionHeapResolver.getType(obj);
 					}
 					return node.type;
 				case 0:
 					if (node.label == null) {
-						IObject obj = snapshot.getObject(node.objectId);
+						IObject obj = getObject(node);
 						node.label = collectionHeapResolver.getDisplayName(obj);
 					}
 					return node.label;
 				case 1:
 					if (node.size == NOT_INITIALIZED) {
-						IObject obj = snapshot.getObject(node.objectId);
+						IObject obj = getObject(node);
 						node.size = collectionHeapResolver.getCollectionSize(obj);
 					}
 					return node.size;
 				case 2:
 					if (node.retainedHeap == NOT_INITIALIZED) {
-						IObject obj = snapshot.getObject(node.objectId);
+						IObject obj = getObject(node);
 						node.retainedHeap = collectionHeapResolver.getCollectionHeapSize(obj);
 					}
 					return node.retainedHeap;
 				case 3:
 					if (node.retainedHeap == NOT_INITIALIZED) {
-						IObject obj = snapshot.getObject(node.objectId);
+						IObject obj = getObject(node);
 						node.retainedHeap = collectionHeapResolver.getCollectionHeapSize(obj);
 					}
 					return node.retainedHeap / totalHeap;
@@ -448,31 +457,31 @@ public class CollectionQuery implements IQuery {
 				switch (columnIndex) {
 				case -1:
 					if (node.type == NOT_INITIALIZED) {
-						IObject obj = snapshot.getObject(node.objectId);
+						IObject obj = getObject(node);
 						node.type = collectionHeapResolver.getType(obj);
 					}
 					return node.type;
 				case 0:
 					if (node.label == null) {
-						IObject obj = snapshot.getObject(node.objectId);
+						IObject obj = getObject(node);
 						node.label = collectionHeapResolver.getDisplayName(obj);
 					}
 					return node.label;
 				case 1:
 					if (node.size == NOT_INITIALIZED) {
-						IObject obj = snapshot.getObject(node.objectId);
+						IObject obj = getObject(node);
 						node.size = collectionHeapResolver.getCollectionSize(obj);
 					}
 					return node.size;
 				case 2:
 					if (node.retainedHeap == NOT_INITIALIZED) {
-						IObject obj = snapshot.getObject(node.objectId);
+						IObject obj = getObject(node);
 						node.retainedHeap = collectionHeapResolver.getCollectionHeapSize(obj);
 					}
 					return node.retainedHeap;
 				case 3:
 					if (node.retainedHeap == NOT_INITIALIZED) {
-						IObject obj = snapshot.getObject(node.objectId);
+						IObject obj = getObject(node);
 						node.retainedHeap = collectionHeapResolver.getCollectionHeapSize(obj);
 					}
 					return node.retainedHeap / totalHeap;

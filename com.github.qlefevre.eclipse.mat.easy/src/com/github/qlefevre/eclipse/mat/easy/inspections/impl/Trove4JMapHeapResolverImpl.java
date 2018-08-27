@@ -16,7 +16,7 @@ import org.eclipse.mat.snapshot.extension.Subjects;
 import org.eclipse.mat.snapshot.model.IObject;
 
 import com.github.qlefevre.eclipse.mat.easy.extension.ICollectionHeapResolver;
-import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapResolver;
+import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractMapHeapResolverWithGenericTypeSupport;
 
 /**
  * Trove4JMapHeapResolverImpl
@@ -24,7 +24,8 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
  * @author Quentin Lefèvre
  */
 @Subjects(value = { GNU_TROVE_MAP_HASH_THASHMAP })
-public class Trove4JMapHeapResolverImpl extends AbstractCollectionHeapResolver implements ICollectionHeapResolver {
+public class Trove4JMapHeapResolverImpl extends AbstractMapHeapResolverWithGenericTypeSupport
+		implements ICollectionHeapResolver {
 
 	@Override
 	public int getCollectionSize(IObject object) throws SnapshotException {
@@ -33,8 +34,13 @@ public class Trove4JMapHeapResolverImpl extends AbstractCollectionHeapResolver i
 	}
 
 	@Override
-	public byte getType(IObject object) throws SnapshotException {
-		return TYPE_MAP;
+	protected Object[] getKeyStorageObjects(IObject object) throws SnapshotException {
+		return new Object[] { object.resolveValue("_set") };
+	}
+
+	@Override
+	protected Object[] getValueStorageObjects(IObject object) throws SnapshotException {
+		return new Object[] { object.resolveValue("_values") };
 	}
 
 }

@@ -9,6 +9,7 @@
  *******************************************************************************/
 package com.github.qlefevre.eclipse.mat.easy.ui.snapshot.panes;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -44,7 +45,16 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		@SuppressWarnings("unchecked")
 		List<Object> nodes = (List<Object>) tree.getChildren(node);
 		// Filter by percentage
-		Object[] children = nodes.stream().filter(predicate(tree)).toArray();
+		List<Object> childrenObjectList = new ArrayList<Object>();
+		for (Object node0 : nodes) {
+			if (predicate(tree).test(node0)) {
+				childrenObjectList.add(node0);
+			} else {
+				break;
+			}
+		}
+		Object[] children = childrenObjectList.toArray();
+		// Object[] children = nodes.stream().filter(predicate(tree)).toArray();
 		// No children ?
 		if (children.length == 0) {
 			List<Object> objects = nodes.stream().limit(CHILDREN_LIMIT).collect(Collectors.toList());
@@ -62,8 +72,16 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		@SuppressWarnings("unchecked")
 		List<Object> nodes = ((List<Object>) node);
 		// Filter by percentage
-		Object[] children = nodes.stream().filter(predicate(tree)).toArray();
-
+		// Object[] children = nodes.stream().filter(predicate(tree)).toArray();
+		List<Object> childrenObjectList = new ArrayList<Object>();
+		for (Object node0 : nodes) {
+			if (predicate(tree).test(node0)) {
+				childrenObjectList.add(node0);
+			} else {
+				break;
+			}
+		}
+		Object[] children = childrenObjectList.toArray();
 		return children;
 	}
 
@@ -82,6 +100,7 @@ public class CollectionTreeContentProvider implements ITreeContentProvider {
 		List<Object> nodes = (List<Object>) tree.getChildren(node);
 		// Has children ?
 		boolean hasChildren = nodes.parallelStream().anyMatch(predicate(tree));
+		// boolean hasChildren = getChildren(node).length > 0;
 		// No children ?
 		if (!hasChildren) {
 			hasChildren = getChildren(node).length > 0;
