@@ -428,6 +428,8 @@ public class CollectionPane extends AbstractEditorPane implements ISelectionProv
 				Object[] newPath = Arrays.copyOf(path, path.length + 1);
 				newPath[path.length] = object;
 				paths.addAll(getPaths(contentProvider, newPath, object));
+			} else {
+				break;
 			}
 		}
 		if (paths.isEmpty()) {

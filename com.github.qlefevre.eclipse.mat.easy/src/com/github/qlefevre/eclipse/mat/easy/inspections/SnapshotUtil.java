@@ -10,6 +10,8 @@
 package com.github.qlefevre.eclipse.mat.easy.inspections;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.mat.SnapshotException;
 import org.eclipse.mat.snapshot.ISnapshot;
@@ -58,17 +60,20 @@ public final class SnapshotUtil {
 				long references[] = objectArray.getReferenceArray();
 				if (references != null && references.length > 0) {
 					ISnapshot snapshot = objectArray.getSnapshot();
-					String type = snapshot.getObject(snapshot.mapAddressToId(references[0])).getClazz().getName();
-					boolean allMatch = Arrays.stream(references).parallel().mapToObj(reference -> {
+					List<String> object2Classes = Arrays.stream(references).parallel().mapToObj(reference -> {
 						try {
 							return snapshot.getObject(snapshot.mapAddressToId(reference));
 						} catch (SnapshotException e) {
 							throw new RuntimeException(e);
 						}
 					}).map(obj -> obj.getClazz().getName()).filter(clazz -> !"java.lang.ClassLoader".equals(clazz))
-							.allMatch(clazz -> type.equals(clazz));
-					if (allMatch) {
-						genericType = type.substring(type.lastIndexOf('.') + 1);
+							.collect(Collectors.toList());
+					if (!object2Classes.isEmpty()) {
+						String type = object2Classes.get(0);
+						boolean allMatch = object2Classes.stream().allMatch(clazz -> type.equals(clazz));
+						if (allMatch) {
+							genericType = type.substring(type.lastIndexOf('.') + 1);
+						}
 					}
 				}
 			} else if (objects.length > 0 && objects[0] != null) {
