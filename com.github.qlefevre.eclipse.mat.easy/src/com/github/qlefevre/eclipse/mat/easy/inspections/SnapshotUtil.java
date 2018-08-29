@@ -67,7 +67,7 @@ public final class SnapshotUtil {
 							throw new RuntimeException(e);
 						}
 					}).map(obj -> obj.getClazz().getName()).filter(clazz -> !"java.lang.ClassLoader".equals(clazz))
-							.collect(Collectors.toList());
+							.filter(clazz -> !"java.lang.Object".equals(clazz)).collect(Collectors.toList());
 					if (!object2Classes.isEmpty()) {
 						String type = object2Classes.get(0);
 						boolean allMatch = object2Classes.stream().allMatch(clazz -> type.equals(clazz));
