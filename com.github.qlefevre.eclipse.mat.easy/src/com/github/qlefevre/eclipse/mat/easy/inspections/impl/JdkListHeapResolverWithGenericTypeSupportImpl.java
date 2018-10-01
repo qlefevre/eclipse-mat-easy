@@ -27,7 +27,8 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractCollectionHeapRe
  * 
  * @author Quentin Lefèvre
  */
-@Subjects(value = { JAVA_UTIL_ARRAYLIST, JAVA_UTIL_ARRAYS_ARRAYLIST, JAVA_UTIL_IMMUTABLECOLLECTIONS_LISTN })
+@Subjects(value = { JAVA_UTIL_ARRAYLIST, JAVA_UTIL_ARRAYS_ARRAYLIST, JAVA_UTIL_IMMUTABLECOLLECTIONS_LIST1,
+		JAVA_UTIL_IMMUTABLECOLLECTIONS_LIST2, JAVA_UTIL_IMMUTABLECOLLECTIONS_LISTN })
 public class JdkListHeapResolverWithGenericTypeSupportImpl
 		extends AbstractCollectionHeapResolverWithGenericTypeSupport {
 

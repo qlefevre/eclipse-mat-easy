@@ -26,7 +26,8 @@ import com.github.qlefevre.eclipse.mat.easy.inspections.AbstractMapHeapResolverW
  * 
  * @author Quentin Lefèvre
  */
-@Subjects(value = { JAVA_UTIL_IMMUTABLECOLLECTIONS_MAP1, JAVA_UTIL_IMMUTABLECOLLECTIONS_MAPN })
+@Subjects(value = { JAVA_UTIL_IMMUTABLECOLLECTIONS_MAP1, JAVA_UTIL_IMMUTABLECOLLECTIONS_MAP1,
+		JAVA_UTIL_IMMUTABLECOLLECTIONS_MAPN })
 public class JdkMapHeapResolverWithGenericTypeSupportImpl extends AbstractMapHeapResolverWithGenericTypeSupport
 		implements ICollectionHeapResolver {
 
