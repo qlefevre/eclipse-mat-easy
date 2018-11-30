@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse MAT Easy !
 Bundle-SymbolicName: com.github.qlefevre.eclipse.mat.easy;singleton:=true
-Bundle-Version: 1.1
+Bundle-Version: 1.2
 Automatic-Module-Name: MAT
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.mat.api;bundle-version="1.5.0",
