@@ -4,7 +4,7 @@ From my own experience, OutOfMemoryError are often due to a "Collection" instanc
 We all have our recipe to deal with OOME. Mine is quite simple, I get the dominator tree view, and I go down all the levels as long as the retained heap is high. And I often found an API Collection instance as *java.util.List*, *java.util.Set* or *java.util.Map*. 
 
 This plugin provides a new view **Collection tree**
-![alt text](/doc/collection_tree_view.png "Collection tree view")
+![alt text](/doc/collection_tree_view_2022.png "Collection tree view")
 
 You can access it with this new action in toolbar: ![alt text](/doc/collection_tree.gif "Collection tree view")
 
